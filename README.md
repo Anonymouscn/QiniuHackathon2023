@@ -9,5 +9,5 @@
 
 ## Major Member
 * Anonymous (Guanliang Pan) [leader]
-* Tang Zen
+* Tang Zen Yang
 * Yulong Ao
