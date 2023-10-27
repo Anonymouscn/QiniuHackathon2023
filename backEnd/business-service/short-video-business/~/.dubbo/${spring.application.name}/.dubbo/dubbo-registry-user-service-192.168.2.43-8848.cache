@@ -1,3 +1,0 @@
-#Dubbo Registry Cache
-#Sat Oct 28 04:33:25 CST 2023
-api.file.IFileService=dubbo\://10.3.1.154\:26684/api.file.IFileService?application\=file-service&category\=providers&deprecated\=false&dubbo\=2.0.2&dynamic\=true&generic\=false&interface\=api.file.IFileService&methods\=uploadImageToOSS,uploadToOSS,uploadVideoToOSS&path\=api.file.IFileService&prefer.serialization\=fastjson2,hessian2&protocol\=dubbo&release\=3.2.7&service-name-mapping\=true&side\=provider&timestamp\=1698438803592
