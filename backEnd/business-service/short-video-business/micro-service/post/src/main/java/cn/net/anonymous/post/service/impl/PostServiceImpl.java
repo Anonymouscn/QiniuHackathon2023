@@ -1,9 +1,9 @@
 package cn.net.anonymous.post.service.impl;
 
-import api.IPostService;
+import api.post.IPostService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import entity.Post;
-import mapper.PostMapper;
+import dao.post.entity.Post;
+import dao.post.mapper.PostMapper;
 import org.apache.dubbo.config.annotation.DubboService;
 
 /**

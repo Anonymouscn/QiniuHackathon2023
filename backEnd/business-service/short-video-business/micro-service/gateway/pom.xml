@@ -6,7 +6,7 @@
     <artifactId>gateway</artifactId>
     <version>1.0.0</version>
     <name>gateway</name>
-    <description>gateway</description>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>cn.net.anonymous</groupId>
@@ -15,36 +15,38 @@
     </parent>
 
     <dependencies>
-        <!-- webflux -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
-            <version>${webflux.version}</version>
-        </dependency>
-        <!-- netty -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-reactor-netty</artifactId>
-            <version>${netty.version}</version>
-        </dependency>
-        <!-- dubbo provider -->
+        <!-- webflux starter * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
-            <artifactId>dubbo-provider-starter</artifactId>
+            <artifactId>webflux-starter</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!-- pojo -->
+        <!-- dubbo consumer * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
-            <artifactId>full-pojo</artifactId>
+            <artifactId>dubbo-consumer-starter</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!-- full api -->
+        <!-- pojo * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
-            <artifactId>full-api</artifactId>
+            <artifactId>pojo</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <!-- api * -->
+        <dependency>
+            <groupId>cn.net.anonymous</groupId>
+            <artifactId>api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!-- global * -->
+        <dependency>
+            <groupId>cn.net.anonymous</groupId>
+            <artifactId>global</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <!-- ...// TODO waiting for decide ... -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
@@ -54,17 +56,6 @@
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-openapi3-ui</artifactId>
             <version>4.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.net.anonymous</groupId>
-            <artifactId>global</artifactId>
-            <version>1.0.0</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>cn.net.anonymous</groupId>
-                    <artifactId>webmvc-starter</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
 

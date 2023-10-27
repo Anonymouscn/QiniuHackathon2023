@@ -6,7 +6,7 @@
     <artifactId>sms</artifactId>
     <version>1.0.0</version>
     <name>sms</name>
-    <description>sms</description>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>cn.net.anonymous</groupId>
@@ -15,25 +15,31 @@
     </parent>
 
     <dependencies>
-        <!-- webmvc package -->
+        <!-- webmvc package * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
             <artifactId>webmvc-starter</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!-- dubbo provider -->
+        <!-- dubbo provider * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
             <artifactId>dubbo-provider-starter</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!-- sms api -->
+        <!-- api * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
-            <artifactId>sms-api</artifactId>
+            <artifactId>api</artifactId>
             <version>1.0.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.baomidou</groupId>
+                    <artifactId>mybatis-plus-boot-starter</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
-        <!-- system package -->
+        <!-- global * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
             <artifactId>global</artifactId>

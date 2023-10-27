@@ -1,16 +1,14 @@
 package cn.net.anonymous.gateway.controller.user.base;
 
-import api.IUserService;
+import api.user.IUserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import vo.Result;
 
 /**
@@ -29,7 +27,7 @@ public class BaseInfoController {
     private IUserService userService;
 
     @GetMapping("/greet/{name}")
-    public String hello(@PathVariable("name") String name) {
+    public String greet(@PathVariable("name") String name) {
         return userService.hello(name);
     }
 
@@ -46,6 +44,18 @@ public class BaseInfoController {
     @GetMapping("/info/{id}")
     public Result<?> getBaseInfo(@PathVariable("id") String id) {
         return Result.success();
+    }
+
+    /**
+     * 上传用户头像
+     *
+     * @param avatar 用户头像
+     * @return 用户头像 hash
+     */
+    @PostMapping("avatar/upload")
+    public Result<?> uploadAvatar(@RequestParam(value = "avatar")
+                                      MultipartFile avatar) {
+        return Result.success(userService.uploadAvatar(avatar));
     }
 
     /**

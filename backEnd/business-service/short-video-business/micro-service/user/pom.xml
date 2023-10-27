@@ -6,7 +6,7 @@
     <artifactId>user</artifactId>
     <version>1.0.0</version>
     <name>user</name>
-    <description>user</description>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>cn.net.anonymous</groupId>
@@ -15,25 +15,31 @@
     </parent>
 
     <dependencies>
-        <!--  dubbo provider -->
+        <!-- dubbo provider * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
             <artifactId>dubbo-provider-starter</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!-- webmvc package -->
+        <!-- webmvc package * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
             <artifactId>webmvc-starter</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!-- user api -->
+        <!-- api * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
-            <artifactId>user-api</artifactId>
+            <artifactId>api</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!-- system package -->
+        <!-- dao-mysql-starter * -->
+        <dependency>
+            <groupId>cn.net.anonymous</groupId>
+            <artifactId>dao-mysql-starter</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!-- global * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
             <artifactId>global</artifactId>

@@ -15,11 +15,10 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableDubbo
 @EnableDiscoveryClient
 @SpringBootApplication
-@ComponentScan({"cn.net.anonymous.log", "system", "api", "util"})
+@ComponentScan({"cn.net.anonymous.log", "system.*", "api", "util"})
 public class LogApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(LogApplication.class, args);
     }
-
 }

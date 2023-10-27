@@ -17,7 +17,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableDiscoveryClient
 @SpringBootApplication
 @ComponentScan({"cn.net.anonymous.post", "mapper", "api", "system", "util"})
-@MapperScan("mapper")
+@MapperScan("dao.*.mapper")
 public class PostApplication {
 
     public static void main(String[] args) {

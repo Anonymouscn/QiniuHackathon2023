@@ -16,6 +16,7 @@
         <module>dubbo-provider-starter</module>
         <module>dubbo-consumer-starter</module>
         <module>webmvc-starter</module>
+        <module>webflux-starter</module>
         <module>dao-mysql-starter</module>
     </modules>
 

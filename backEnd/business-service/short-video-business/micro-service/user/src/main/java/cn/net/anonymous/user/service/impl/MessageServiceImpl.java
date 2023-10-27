@@ -1,6 +1,6 @@
 package cn.net.anonymous.user.service.impl;
 
-import api.IMessageService;
+import api.user.IMessageService;
 import org.apache.dubbo.config.annotation.DubboService;
 
 /**

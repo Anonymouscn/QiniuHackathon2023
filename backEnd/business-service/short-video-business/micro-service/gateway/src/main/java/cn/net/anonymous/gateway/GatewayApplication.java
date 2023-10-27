@@ -15,7 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableDubbo
 @EnableDiscoveryClient
 @SpringBootApplication
-@ComponentScan({"cn.net.anonymous.gateway", "api", "util"})
+@ComponentScan({"cn.net.anonymous.gateway", "api", "util", "system"})
 public class GatewayApplication {
 
     public static void main(String[] args) {

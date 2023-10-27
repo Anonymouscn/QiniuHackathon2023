@@ -1,6 +1,6 @@
 package cn.net.anonymous.sms.service.impl;
 
-import api.IAuthService;
+import api.sms.IAuthService;
 import org.apache.dubbo.config.annotation.DubboService;
 
 /**

@@ -5,6 +5,7 @@
     <artifactId>dubbo-consumer-starter</artifactId>
     <name>dubbo-consumer</name>
     <version>1.0.0</version>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>cn.net.anonymous</groupId>
@@ -13,7 +14,7 @@
     </parent>
 
     <dependencies>
-        <!-- dubbo -->
+        <!-- dubbo * -->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>

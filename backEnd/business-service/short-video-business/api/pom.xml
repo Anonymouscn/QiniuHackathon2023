@@ -4,20 +4,43 @@
 
     <artifactId>api</artifactId>
     <name>api</name>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>file-api</module>
-        <module>log-api</module>
-        <module>post-api</module>
-        <module>sms-api</module>
-        <module>user-api</module>
-        <module>full-api</module>
-    </modules>
+    <packaging>jar</packaging>
+    <version>1.0.0</version>
 
     <parent>
         <groupId>cn.net.anonymous</groupId>
         <artifactId>short-video-business</artifactId>
         <version>1.0.0</version>
     </parent>
+
+    <dependencies>
+        <!-- pojo -->
+        <dependency>
+            <groupId>cn.net.anonymous</groupId>
+            <artifactId>pojo</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!-- dao -->
+        <dependency>
+            <groupId>cn.net.anonymous</groupId>
+            <artifactId>dao</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- build for maven -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-build.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${maven-build.encoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

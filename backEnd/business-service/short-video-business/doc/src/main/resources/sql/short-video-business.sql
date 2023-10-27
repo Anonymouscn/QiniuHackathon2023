@@ -7,7 +7,7 @@ USE `db_short_video_business_service`;
 # create table for user
 DROP TABLE IF EXISTS `tb_user`;
 CREATE TABLE `tb_user` (
-    `pk_user_id` BIGINT(20) NOT NULL COMMENT 'id',
+    `pk_user_id` BIGINT(20) NOT NULL COMMENT '用户id',
     `nickname` VARCHAR(18) NOT NULL COMMENT '昵称',
     `phone` VARCHAR(12) NOT NULL COMMENT '手机号',
     `password` VARCHAR(200) NOT NULL COMMENT '密码',
@@ -20,6 +20,23 @@ CREATE TABLE `tb_user` (
     `gmt_update` DATETIME NULL COMMENT '更新时间',
     `gmt_delete` DATETIME NULL COMMENT '删除时间',
     PRIMARY KEY (`pk_user_id`)
+) ENGINE = InnoDB CHARACTER SET = utf8mb4;
+
+# create table for avatar of user
+DROP TABLE IF EXISTS `tb_avatar`;
+CREATE TABLE `tb_avatar` (
+    `pk_avatar_id` BIGINT(20) NOT NULL COMMENT '头像id',
+    `fk_user_id` BIGINT(20) NOT NULL COMMENT '用户id',
+    `fk_file_id` BIGINT(20) NOT NULL COMMENT '文件id',
+    `url` VARCHAR(200) NOT NULL COMMENT '头像链接',
+    `len` INT(8) NOT NULL COMMENT '链接长度',
+    ### common ###
+    `is_deleted` TINYINT(1) NOT NULL DEFAULT 0 COMMENT '是否已删除',
+    `is_deletable` TINYINT(1) NOT NULL DEFAULT 1 COMMENT '是否可删除',
+    `gmt_create` DATETIME NOT NULL COMMENT '创建时间',
+    `gmt_update` DATETIME NULL COMMENT '更新时间',
+    `gmt_delete` DATETIME NULL COMMENT '删除时间',
+    PRIMARY KEY (`pk_avatar_id`)
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4;
 
 # create table for user's favourite [user <-> post]

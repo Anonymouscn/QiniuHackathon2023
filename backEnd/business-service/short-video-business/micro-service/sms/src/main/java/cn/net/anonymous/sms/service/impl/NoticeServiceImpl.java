@@ -1,6 +1,6 @@
 package cn.net.anonymous.sms.service.impl;
 
-import api.INoticeService;
+import api.sms.INoticeService;
 import org.apache.dubbo.config.annotation.DubboService;
 
 /**

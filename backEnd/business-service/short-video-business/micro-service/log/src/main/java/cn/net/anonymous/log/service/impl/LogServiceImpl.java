@@ -1,6 +1,6 @@
 package cn.net.anonymous.log.service.impl;
 
-import api.ILogService;
+import api.log.ILogService;
 import org.apache.dubbo.config.annotation.DubboService;
 
 /**

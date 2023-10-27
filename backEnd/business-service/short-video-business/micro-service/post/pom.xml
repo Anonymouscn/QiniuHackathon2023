@@ -6,6 +6,7 @@
     <artifactId>post</artifactId>
     <version>1.0.0</version>
     <name>video</name>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>cn.net.anonymous</groupId>
@@ -14,28 +15,34 @@
     </parent>
 
     <dependencies>
-        <!-- dubbo provider -->
+        <!-- dubbo provider * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
             <artifactId>dubbo-provider-starter</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!-- webmvc package -->
+        <!-- webmvc package * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
             <artifactId>webmvc-starter</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!-- post api -->
+        <!-- api * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
-            <artifactId>post-api</artifactId>
+            <artifactId>api</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!-- system -->
+        <!-- global * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
             <artifactId>global</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!-- dao-mysql-starter * -->
+        <dependency>
+            <groupId>cn.net.anonymous</groupId>
+            <artifactId>dao-mysql-starter</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>

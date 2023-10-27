@@ -16,8 +16,8 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableDubbo
 @EnableDiscoveryClient
 @SpringBootApplication
-@MapperScan("mapper")
-@ComponentScan({"cn.net.anonymous.user", "mapper", "system", "api", "util"})
+@MapperScan("dao.user.mapper")
+@ComponentScan({"cn.net.anonymous.user", "dao.*.mapper", "system", "api", "util"})
 public class UserApplication {
 
     public static void main(String[] args) {

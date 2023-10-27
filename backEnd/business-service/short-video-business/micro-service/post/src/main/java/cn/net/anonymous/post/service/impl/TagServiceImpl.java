@@ -1,10 +1,10 @@
 package cn.net.anonymous.post.service.impl;
 
-import api.ITagService;
+import api.post.ITagService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import entity.Tag;
+import dao.post.entity.Tag;
+import dao.post.mapper.TagMapper;
 import lombok.RequiredArgsConstructor;
-import mapper.TagMapper;
 import org.apache.dubbo.config.annotation.DubboService;
 
 /**

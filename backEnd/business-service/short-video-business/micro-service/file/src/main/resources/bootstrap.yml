@@ -12,19 +12,23 @@ spring:
         prefix: ${spring.application.name}
         file-extension: yml
       discovery:
-        server-addr: 192.168.2.43:8848
-        namespace: cb95c626-d402-4552-a491-3ad4e5fb2553
+        server-addr: ${spring.cloud.nacos.config.server-addr}
+        namespace: ${spring.cloud.nacos.config.namespace}
         group: ${spring.profiles.active}
 dubbo:
   application:
-    name: log-service
+    name: ${spring.application.name}
     qosEnable: true
     qosPort: 33333
     qosAcceptForeignIp: false
   registry:
-    address: nacos://192.168.2.43:8848
+    check: false
+    address: nacos://${spring.cloud.nacos.config.server-addr}
+    cache-folder: /Users/anonymous/.dubbo/${spring.application.name}
   scan:
     base-packages: service.impl
   protocol:
     name: dubbo
     port: 26684
+  consumer:
+    check: false

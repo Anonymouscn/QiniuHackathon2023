@@ -5,6 +5,7 @@
     <artifactId>dubbo-provider-starter</artifactId>
     <name>dubbo-provider</name>
     <version>1.0.0</version>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>cn.net.anonymous</groupId>
@@ -13,7 +14,7 @@
     </parent>
 
     <dependencies>
-        <!-- dubbo -->
+        <!-- dubbo * -->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo</artifactId>
@@ -22,7 +23,7 @@
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-registry-nacos</artifactId>
         </dependency>
-        <!-- kotlin standard lib -->
+        <!-- kotlin standard lib * -->
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>

@@ -4,7 +4,8 @@
 
     <artifactId>pojo</artifactId>
     <name>pojo</name>
-    <packaging>pom</packaging>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>cn.net.anonymous</groupId>
@@ -12,13 +13,19 @@
         <version>1.0.0</version>
     </parent>
 
-    <modules>
-        <module>file-pojo</module>
-        <module>log-pojo</module>
-        <module>post-pojo</module>
-        <module>sms-pojo</module>
-        <module>user-pojo</module>
-        <module>common-pojo</module>
-        <module>full-pojo</module>
-    </modules>
+    <build>
+        <plugins>
+            <!-- build for maven -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-build.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${maven-build.encoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
