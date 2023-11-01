@@ -14,12 +14,21 @@
 
     <modules>
         <module>gateway</module>
-        <module>file</module>
+        <module>file-schedule-server</module>
+        <module>file-workflow-server</module>
         <module>log</module>
         <module>post</module>
         <module>sms</module>
         <module>user</module>
         <module>websocket-worker</module>
         <module>websocket-monitor</module>
+        <!-- workflow 视频处理集群 -->
+        <module>workflow-monitor-server</module>
+        <module>workflow-slice-server</module>
+        <module>workflow-convert-server</module>
+        <module>workflow-merge-server</module>
+        <module>workflow-stream-server</module>
+        <module>workflow-push-server</module>
+        <module>workflow-clean-server</module>
     </modules>
 </project>

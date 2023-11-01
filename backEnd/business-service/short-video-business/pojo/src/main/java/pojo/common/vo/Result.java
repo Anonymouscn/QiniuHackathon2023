@@ -3,6 +3,7 @@ package pojo.common.vo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
+import lombok.experimental.Accessors;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
  * @version 1.0
  */
 @Data
+@Accessors(chain = true)
 public class Result<T>
         implements Serializable {
 

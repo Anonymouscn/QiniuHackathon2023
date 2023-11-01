@@ -5,6 +5,7 @@
     <artifactId>webmvc-starter</artifactId>
     <name>webmvc-starter</name>
     <version>1.0.0</version>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>cn.net.anonymous</groupId>

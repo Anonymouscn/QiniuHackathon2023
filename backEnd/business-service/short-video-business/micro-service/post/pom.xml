@@ -5,7 +5,7 @@
 
     <artifactId>post</artifactId>
     <version>1.0.0</version>
-    <name>video</name>
+    <name>post</name>
     <packaging>jar</packaging>
 
     <parent>

@@ -2,8 +2,7 @@ package api.user;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import dao.user.entity.User;
-import org.springframework.web.multipart.MultipartFile;
-import pojo.file.vo.FileVo;
+import pojo.common.dto.SerializableStream;
 
 /**
  * 用户基本信息服务接口
@@ -14,6 +13,7 @@ import pojo.file.vo.FileVo;
 public interface IUserService
         extends IService<User> {
 
+    // just for test connect
     String hello(String name);
 
     /**
@@ -22,5 +22,5 @@ public interface IUserService
      * @param avatar 用户头像
      * @return 是否上传成功
      */
-    FileVo uploadAvatar(MultipartFile avatar);
+    Long uploadAvatar(SerializableStream avatar);
 }

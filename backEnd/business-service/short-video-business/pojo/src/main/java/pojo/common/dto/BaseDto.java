@@ -5,6 +5,12 @@ import lombok.experimental.Accessors;
 import java.io.Serial;
 import java.io.Serializable;
 
+/**
+ * 基础 dto
+ *
+ * @author anonymous
+ * @version 1.0
+ */
 @Data
 @Accessors(chain = true)
 public class BaseDto

@@ -18,6 +18,7 @@
         <module>webmvc-starter</module>
         <module>webflux-starter</module>
         <module>dao-mysql-starter</module>
+        <module>dao-mongo-starter</module>
     </modules>
 
     <dependencyManagement>

@@ -16,9 +16,14 @@
 
     <dependencies>
         <!-- webflux starter * -->
+<!--        <dependency>-->
+<!--            <groupId>cn.net.anonymous</groupId>-->
+<!--            <artifactId>webflux-starter</artifactId>-->
+<!--            <version>1.0.0</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
-            <artifactId>webflux-starter</artifactId>
+            <artifactId>webmvc-starter</artifactId>
             <version>1.0.0</version>
         </dependency>
         <!-- dubbo consumer * -->

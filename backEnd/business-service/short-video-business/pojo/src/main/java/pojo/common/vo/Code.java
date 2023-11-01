@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * 状态码
+ * 业务状态码
  *
  * @author anonymous
  * @version 1.0

@@ -28,7 +28,7 @@ dubbo:
   scan:
     base-packages: service.impl
   protocol:
-    name: dubbo
+    name: tri
     port: 15624
   consumer:
     check: false
