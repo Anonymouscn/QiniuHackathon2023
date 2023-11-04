@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>global</artifactId>
+    <name>global</name>
+    <packaging>jar</packaging>
+    <version>1.0.0</version>
+
+    <parent>
+        <groupId>cn.net.anonymous</groupId>
+        <artifactId>micro-service</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <dependencies>
+        <!-- pojo -->
+        <dependency>
+            <groupId>cn.net.anonymous</groupId>
+            <artifactId>common-pojo</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!-- dubbo (import to hook dubbo framework) -->
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>${dubbo.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.net.anonymous</groupId>
+            <artifactId>webmvc-starter</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.net.anonymous</groupId>
+            <artifactId>dao-mongo-starter</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- build for maven -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-build.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${maven-build.encoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

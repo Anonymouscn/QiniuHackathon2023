@@ -45,6 +45,12 @@
             <artifactId>global</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <!-- Tencent sms * -->
+        <dependency>
+            <groupId>com.tencentcloudapi</groupId>
+            <artifactId>tencentcloud-sdk-java-sms</artifactId>
+            <version>${tencent-sms.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -1,13 +1,21 @@
 package dao.user.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import dao.common.entity.Base;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import dao.common.entity.BaseData;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.index.CompoundIndexes;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+import system.config.JsonConfig;
 import java.io.Serial;
 import java.io.Serializable;
 
@@ -19,36 +27,59 @@ import java.io.Serializable;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName(value = "tb_user")
 @Accessors(chain = true)
+@CompoundIndexes(
+        @CompoundIndex(
+                name = "idx_phone_password_nickname_avatar_sex_ban",
+                def = "{phone: 1, password: 1, nickname: 1, avatar_url: 1, sex: 1, is_banned: 1}"
+        )
+)
+@Document("doc_user")
 public class User
-        extends Base
+        extends BaseData
         implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
     /** 用户id */
-    @TableId(type = IdType.ASSIGN_ID, value = "pk_user_id")
-    private Long id;
+    @Id
+    @JsonSerialize(using = JsonConfig.ObjectIdSerializer.class)
+    @JsonDeserialize(using = JsonConfig.ObjectIdDeserializer.class)
+    @JsonProperty("user_id")
+    private ObjectId userId;
 
     /** 昵称 */
-    @TableField(value = "nickname")
+    @Field("nickname")
+    @Indexed(unique = true)
     private String nickname;
 
-    /** 手机号 */
-    @TableField(value = "phone")
+    /** 手机号 - reverse */
+    @Field("phone")
+    @Indexed(unique = true)
     private String phone;
 
     /** 密码 */
-    @TableField(value = "password")
+    @JsonIgnore
+    @Field("password")
     private String password;
 
     /** 性别 */
-    @TableField(value = "sex")
+    @Field("sex")
     private Integer sex;
 
     /** 是否被封禁 */
-    @TableField(value = "is_banned")
+    @JsonIgnore
+    @Field("is_banned")
     private Integer isBanned;
+
+    /** 头像链接 - reverse */
+    @Field("avatar_url")
+    @JsonProperty("avatar_url")
+    private String avatarUrl;
+
+    /** 被关注总数 */
+    @Field("watched")
+    @Indexed(name = "idx_watched")
+    private Integer watched;
 }

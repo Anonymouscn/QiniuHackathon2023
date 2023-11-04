@@ -1,4 +1,9 @@
 spring:
+  redis:
+    password: 123456
+    single:
+      address: "redis://127.0.0.1:6379"
+      database: 7
   application:
     name: post-service
   profiles:

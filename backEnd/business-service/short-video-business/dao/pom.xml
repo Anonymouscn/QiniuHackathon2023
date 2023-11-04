@@ -19,6 +19,21 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatis-plus.version}</version>
         </dependency>
+        <dependency>
+            <groupId>cn.net.anonymous</groupId>
+            <artifactId>dao-mongo-starter</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!-- kafka (async to transfer data) -->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.net.anonymous</groupId>
+            <artifactId>pojo</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

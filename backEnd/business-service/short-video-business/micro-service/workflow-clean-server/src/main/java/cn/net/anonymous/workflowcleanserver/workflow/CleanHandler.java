@@ -8,7 +8,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
-import pojo.file.dto.WorkflowTask;
+import pojo.workflow.dto.WorkflowTask;
 import util.FileUtil;
 import java.io.File;
 

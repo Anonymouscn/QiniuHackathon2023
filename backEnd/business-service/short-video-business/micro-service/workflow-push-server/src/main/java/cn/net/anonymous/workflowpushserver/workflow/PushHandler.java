@@ -18,7 +18,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 import com.qiniu.storage.Configuration;
-import pojo.file.dto.WorkflowTask;
+import pojo.workflow.dto.WorkflowTask;
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -109,6 +109,7 @@ public class PushHandler
                     .parallel()
                     .forEach(s -> {
                         String name = s.getName();
+                        log.warn("上传 - {} - 是否匹配: {}", name, matchDataFile(name));
                         if(matchDataFile(name)) {
                             // 上传文件到 oss
                             File file = new File(folder.getAbsoluteFile() + "/" + name);
@@ -132,17 +133,12 @@ public class PushHandler
                         }
                     });
             // 修改 m3u8 列表文件
-            BufferedReader bufferedReader;
             String uri = "";
-            try (FileReader reader = new FileReader(listFile)) {
-                bufferedReader = new BufferedReader(reader);
-            } catch (Exception e) {
-                log.error(e.getMessage());
-                return;
-            }
-            CharArrayWriter fixCache = new CharArrayWriter();
-            String line;
             try {
+                FileReader reader = new FileReader(listFile);
+                BufferedReader bufferedReader = new BufferedReader(reader);;
+                CharArrayWriter fixCache = new CharArrayWriter();
+                String line;
                 while ((line = bufferedReader.readLine()) != null) {
                     if(matchDataFile(line)) {
                         uri = uploadInfo.get(line);
@@ -168,13 +164,13 @@ public class PushHandler
             }
             // 通知 Monitor 推送任务完成
             log.info("[播放列表上传成功] - {}", uri);
-            kafkaTemplate.send("workflow_push_ack_topic", JSONObject.toJSONString(task));
+//            kafkaTemplate.send("workflow_push_ack_topic", JSONObject.toJSONString(task));
         });
     }
 
     /* 匹配数据文件 */
     private boolean matchDataFile(String name) {
-        Pattern pattern = Pattern.compile("product-+[a-z]+[0-9]+.ts");
+        Pattern pattern = Pattern.compile("product-+([\\s\\S]*)+.ts");
         Matcher matcher = pattern.matcher(name);
         return matcher.find();
     }

@@ -15,12 +15,23 @@
     </parent>
 
     <dependencies>
-        <!-- webflux starter * -->
 <!--        <dependency>-->
-<!--            <groupId>cn.net.anonymous</groupId>-->
-<!--            <artifactId>webflux-starter</artifactId>-->
-<!--            <version>1.0.0</version>-->
+<!--            <groupId>org.springdoc</groupId>-->
+<!--            <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>-->
+<!--            <version>2.2.0</version>-->
 <!--        </dependency>-->
+<!--        &lt;!&ndash; knife4j &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.github.xiaoymin</groupId>-->
+<!--            <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>-->
+<!--            <version>4.3.0</version>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-micro-spring-boot-starter</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+        <!-- webmvc starter * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
             <artifactId>webmvc-starter</artifactId>
@@ -49,18 +60,6 @@
             <groupId>cn.net.anonymous</groupId>
             <artifactId>global</artifactId>
             <version>1.0.0</version>
-        </dependency>
-
-        <!-- ...// TODO waiting for decide ... -->
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
-            <version>2.2.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.xiaoymin</groupId>
-            <artifactId>knife4j-openapi3-ui</artifactId>
-            <version>4.3.0</version>
         </dependency>
     </dependencies>
 

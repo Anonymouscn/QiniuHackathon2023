@@ -1,4 +1,9 @@
 spring:
+  redis:
+    password: 123456
+    single:
+      address: "redis://127.0.0.1:6379"
+      database: 7
   application:
     name: sms-service
   profiles:
@@ -32,3 +37,31 @@ dubbo:
     port: 15983
   consumer:
     check: false
+
+sms:
+  # 用户每天限制接收短信条数
+  limitInDay: 100
+  # 短信发送间隔时间
+  interval: 2
+  # 短信有效期
+  efficient: 10
+  # secretId
+  secret-id: AKIDMacR1MSQEw9HF0dAZlkV1IK7fy1iAOM7
+  # secretKey
+  secret-key: Zt7HEwPddPwDFF2av3yfBUcYGn8HE1d1
+  # appId
+  appId: 1400760561
+  # 短信签名
+  sign-name: 匿名者IT技术网
+  # 模版id
+  template-id:
+    # 注册模版 id
+    registry: 1977436
+    # 登录模版 id
+    login: 1977463
+    # 忘记密码模版 id
+    forget: 1977470
+  # 地域
+  region: ap-guangzhou
+  min-client: 10
+  max-client: 20

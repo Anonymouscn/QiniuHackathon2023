@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
-import pojo.file.dto.WorkflowTask;
+import pojo.workflow.dto.WorkflowTask;
 import ws.schild.jave.process.ProcessWrapper;
 import ws.schild.jave.process.ffmpeg.DefaultFFMPEGLocator;
 import java.io.*;

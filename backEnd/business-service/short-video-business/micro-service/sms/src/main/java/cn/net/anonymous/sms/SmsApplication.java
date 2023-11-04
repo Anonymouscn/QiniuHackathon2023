@@ -3,6 +3,7 @@ package cn.net.anonymous.sms;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
 
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableDubbo
 @EnableDiscoveryClient
 @SpringBootApplication
+@EnableConfigurationProperties
 @ComponentScan({"cn.net.anonymous.sms", "api", "system", "util"})
 public class SmsApplication {
 
