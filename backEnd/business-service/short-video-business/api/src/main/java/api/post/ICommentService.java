@@ -31,6 +31,14 @@ public interface ICommentService {
     Comment addComment(CommentDto commentDto);
 
     /**
+     * 回复评论
+     *
+     * @param commentDto 评论 dto
+     * @return 回复的评论信息
+     */
+    Comment replyComment(CommentDto commentDto);
+
+    /**
      * 删除评论
      *
      * @param commentId 评论 id

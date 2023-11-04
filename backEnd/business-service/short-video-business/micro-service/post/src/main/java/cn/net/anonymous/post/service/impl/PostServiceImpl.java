@@ -15,6 +15,8 @@ import pojo.post.dto.PostDto;
 import pojo.workflow.vo.ServerInfo;
 import pojo.post.vo.PostVo;
 
+import java.util.ArrayList;
+
 /**
  * 视频内容接口实现类
  *
@@ -114,6 +116,7 @@ public class PostServiceImpl
         Post post = postRepository.getPostById(postDto.getPostId());
         post.setContent(post.getContent());
         // 设置标签
+        ArrayList<String> tags = new ArrayList<>();
 
         return new PostVo()
                 .setPostId(postRepository.saveOrUpdatePost(post)

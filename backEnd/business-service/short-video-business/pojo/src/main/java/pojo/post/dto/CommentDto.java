@@ -43,6 +43,8 @@ public class CommentDto
 
     /** 发表用户id */
     @NotEmpty(message = "帖子id不能为空", groups = {ValidGroup.Insert.class})
+    @JsonSerialize(using = JsonConfig.ObjectIdSerializer.class)
+    @JsonDeserialize(using = JsonConfig.ObjectIdDeserializer.class)
     @JsonProperty("post_id")
     private ObjectId postId;
 }

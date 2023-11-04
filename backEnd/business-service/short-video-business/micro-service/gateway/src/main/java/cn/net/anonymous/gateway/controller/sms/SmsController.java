@@ -29,7 +29,8 @@ public class SmsController {
      * @return 认证 key
      */
     @GetMapping("/send/{operation}/{phone}")
-    public Result<?> getSms(@PathVariable("phone") String phone, @PathVariable("operation") Integer operation) {
+    public Result<?> getSms(@PathVariable("phone") String phone,
+                            @PathVariable("operation") Integer operation) {
         return Result.success(smsService.sendSms(phone, operation));
     }
 }

@@ -45,6 +45,7 @@ public class LoginController {
     @PostMapping("/passwd")
     public Result<?> loginByPassword(@RequestBody @Validated({ValidGroup.Login.class})
                                      UserDto userDto) {
+
         return Result.success();
     }
 }

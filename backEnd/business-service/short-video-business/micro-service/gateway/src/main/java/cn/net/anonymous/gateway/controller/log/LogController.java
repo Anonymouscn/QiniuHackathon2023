@@ -1,6 +1,8 @@
 package cn.net.anonymous.gateway.controller.log;
 
+import api.log.ILogService;
 import lombok.RequiredArgsConstructor;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/log")
 @RequiredArgsConstructor
 public class LogController {
+
+    @DubboReference
+    private ILogService logService;
 
 
 }

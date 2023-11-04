@@ -1,8 +1,6 @@
 package api.user;
 
-import dao.post.entity.Post;
 import dao.user.entity.User;
-import pojo.common.vo.Page;
 import pojo.user.dto.UserDto;
 import pojo.workflow.vo.ServerInfo;
 
@@ -77,24 +75,4 @@ public interface IUserService {
      * @return 是否更新成功
      */
     boolean updateProfile(UserDto userDto);
-
-//    /**
-//     * 获取/查询用户点赞的帖子
-//     *
-//     * @param no 页码
-//     * @param size 页面大小
-//     * @param keyword 关键词
-//     * @return 用户点赞的帖子分页数据
-//     */
-//    Page<Post> queryPostsLiked(Integer no, Integer size, String userId, String keyword);
-//
-//    /**
-//     * 获取/查询用户收藏的帖子
-//     *
-//     * @param no 页码
-//     * @param size 页面大小
-//     * @param keyword 关键词
-//     * @return 用户收藏的帖子分页数据
-//     */
-//    Page<Post> queryPostsCollected(Integer no, Integer size, String userId, String keyword);
 }

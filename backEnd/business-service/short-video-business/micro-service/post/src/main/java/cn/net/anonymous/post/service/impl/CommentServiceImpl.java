@@ -46,6 +46,17 @@ public class CommentServiceImpl
     }
 
     /**
+     * 回复评论
+     *
+     * @param commentDto 评论 dto
+     * @return 回复的评论信息
+     */
+    @Override
+    public Comment replyComment(CommentDto commentDto) {
+        return null;
+    }
+
+    /**
      * 删除评论
      *
      * @param commentId 评论 id

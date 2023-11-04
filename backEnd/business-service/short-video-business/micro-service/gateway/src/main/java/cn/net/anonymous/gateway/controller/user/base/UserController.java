@@ -51,33 +51,18 @@ public class UserController {
                 Result.success() : Result.businessUpdateError();
     }
 
-//    /**
-//     * 获取/搜索用户点赞过的帖子 +
-//     *
-//     * @param no 页码
-//     * @param size 页面大小
-//     * @param keyword 关键词
-//     * @return 用户点赞过的帖子分页数据
-//     */
-//    @GetMapping({"/liked/{no}/{size}/{keyword}", "/liked/{no}/{size}", "/liked/{no}/{size}/"})
-//    public Result<?> queryPostsLiked(@PathVariable("no") Integer no,
-//                                     @PathVariable("size") Integer size,
-//                                     @PathVariable(value = "keyword", required = false) String keyword) {
-//        return Result.success(userService.queryPostsLiked(no, size, "65464dcc41cd6b3f3186f766", keyword));
-//    }
-//
-//    /**
-//     * 获取/搜索用户收藏过的帖子 +
-//     *
-//     * @param no 页码
-//     * @param size 页面大小
-//     * @param keyword 关键词
-//     * @return 用户收藏过的帖子分页数据
-//     */
-//    @GetMapping({"/collect/{no}/{size}/{keyword}", "/collect/{no}/{size}", "/collect/{no}/{size}/"})
-//    public Result<?> queryPostsCollected(@PathVariable("no") Integer no,
-//                                         @PathVariable("size") Integer size,
-//                                         @PathVariable(value = "keyword", required = false) String keyword) {
-//        return Result.success(userService.queryPostsCollected(no, size, "65464dcc41cd6b3f3186f766", keyword));
-//    }
+    /**
+     * 分页搜索用户
+     *
+     * @param no 页码
+     * @param size 页面大小
+     * @param keyword 关键字
+     * @return 分页搜索结果
+     */
+    @GetMapping("/search/{no}/{size}/{keyword}")
+    public Result<?> queryUser(@PathVariable("no") Integer no,
+                               @PathVariable("size") Integer size,
+                               @PathVariable("keyword") String keyword) {
+        return Result.success();
+    }
 }

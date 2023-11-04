@@ -51,7 +51,7 @@ public class CommentController {
      */
     @PostMapping("/reply")
     public Result<?> replyComment(@RequestBody CommentDto commentDto) {
-        return Result.success();
+        return Result.success(commentService.replyComment(commentDto));
     }
 
     /**

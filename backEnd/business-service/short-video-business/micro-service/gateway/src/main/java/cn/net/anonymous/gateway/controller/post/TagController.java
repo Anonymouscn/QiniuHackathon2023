@@ -40,7 +40,7 @@ public class TagController {
     }
 
     /**
-     * 添加标签 - 测试
+     * 添加标签 - 测试 +
      *
      * @param tagDto 标签 dto
      * @return 添加的标签数据
@@ -48,7 +48,6 @@ public class TagController {
     @PostMapping("/add")
     public Result<?> addTag(@Validated({ValidGroup.Insert.class})
                                 @RequestBody TagDto tagDto) {
-        System.out.println(tagDto.getTags().length);
         return Result.success(tagService.addTag(tagDto.getTags()));
     }
 }
