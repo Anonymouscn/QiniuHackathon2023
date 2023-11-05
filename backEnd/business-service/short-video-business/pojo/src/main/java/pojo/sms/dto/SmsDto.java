@@ -4,8 +4,7 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 import lombok.experimental.Accessors;
 import pojo.common.dto.BaseDto;
-import system.valid.UserValidGroup;
-import system.valid.ValidGroup;
+import pojo.vaild.ValidGroup;
 import java.io.Serial;
 import java.io.Serializable;
 
@@ -37,6 +36,6 @@ public class SmsDto
 
     /** 短信验证码 */
     @NotEmpty(message = "短信验证码不能为空",
-            groups = {UserValidGroup.Registry.class})
+            groups = {ValidGroup.Registry.class})
     private String code;
 }

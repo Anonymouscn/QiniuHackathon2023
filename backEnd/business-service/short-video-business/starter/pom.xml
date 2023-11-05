@@ -19,6 +19,8 @@
         <module>webflux-starter</module>
         <module>dao-mysql-starter</module>
         <module>dao-mongo-starter</module>
+        <module>local-cache-starter</module>
+        <module>shared-cache-starter</module>
     </modules>
 
     <dependencyManagement>
@@ -38,18 +40,6 @@
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-registry-nacos</artifactId>
                 <version>${dubbo.version}</version>
-            </dependency>
-            <!-- druid -->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid-spring-boot-3-starter</artifactId>
-                <version>${druid.version}</version>
-            </dependency>
-            <!-- mybatis plus -->
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>${mybatis-plus.version}</version>
             </dependency>
             <!-- dynamic datasource -->
             <dependency>

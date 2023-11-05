@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pojo.common.vo.Result;
 import pojo.user.dto.UserDto;
-import system.valid.ValidGroup;
+import pojo.vaild.ValidGroup;
 
 /**
  * 用户注册 API 接口

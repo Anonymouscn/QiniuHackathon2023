@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import pojo.common.vo.Page;
 import pojo.common.vo.Result;
 import pojo.post.dto.TagDto;
-import system.valid.ValidGroup;
+import pojo.vaild.ValidGroup;
 
 /**
  * 内容标签 API 接口

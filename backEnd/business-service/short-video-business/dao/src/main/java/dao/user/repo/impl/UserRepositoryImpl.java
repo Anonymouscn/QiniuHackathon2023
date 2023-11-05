@@ -1,9 +1,5 @@
 package dao.user.repo.impl;
 
-import com.google.common.base.Strings;
-import dao.post.entity.Post;
-import dao.user.entity.Collects;
-import dao.user.entity.Likes;
 import dao.user.entity.User;
 import dao.user.repo.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -73,67 +69,31 @@ public class UserRepositoryImpl
         return mongoTemplate.updateFirst(query, update, "doc_user").getModifiedCount() > 0;
     }
 
-//    /**
-//     * 获取/查询用户点赞的帖子
-//     *
-//     * @param no      页码
-//     * @param size    页面大小
-//     * @param keyword 关键词
-//     * @return 用户点赞的帖子分页数据
-//     */
-//    @Override
-//    public Page<Post> queryPostsLiked(Integer no, Integer size, String userId, String keyword) {
-//        List<Likes> likes = mongoTemplate.find(
-//                Query.query(
-//                        Criteria.where("user_id")
-//                                .is(new ObjectId(userId))
-//                ), Likes.class
-//        );
-//        List<ObjectId> list = likes.parallelStream()
-//                .map(Likes::getPostId)
-//                .toList();
-//        Criteria criteria = new Criteria("_id").in(list);
-//        if(!Strings.isNullOrEmpty(keyword))
-//            criteria.and("content")
-//                    .regex(".*?\\" + keyword + ".*");
-//        Query query = new Query(criteria).skip((long) (no - 1) * size).limit(size);
-//        long count = mongoTemplate.count(new Query(criteria), Post.class);
-//        return new Page<Post>()
-//                .setNo(no)
-//                .setSize(size)
-//                .setTotal(count)
-//                .setRecords(mongoTemplate.find(query, Post.class));
-//    }
-
-//    /**
-//     * 获取/查询用户收藏的帖子
-//     *
-//     * @param no      页码
-//     * @param size    页面大小
-//     * @param keyword 关键词
-//     * @return 用户收藏的帖子分页数据
-//     */
-//    @Override
-//    public Page<Post> queryPostsCollected(Integer no, Integer size, String userId, String keyword) {
-//        List<Collects> collects = mongoTemplate.find(
-//                Query.query(
-//                        Criteria.where("user_id")
-//                                .is(new ObjectId(userId))
-//                ), Collects.class
-//        );
-//        List<ObjectId> list = collects.parallelStream()
-//                .map(Collects::getPostId)
-//                .toList();
-//        Criteria criteria = new Criteria("_id").in(list);
-//        if(!Strings.isNullOrEmpty(keyword))
-//            criteria.and("content")
-//                    .regex(".*?\\" + keyword + ".*");
-//        Query query = new Query(criteria).skip((long) (no - 1) * size).limit(size);
-//        long count = mongoTemplate.count(new Query(criteria), Post.class);
-//        return new Page<Post>()
-//                .setNo(no)
-//                .setSize(size)
-//                .setTotal(count)
-//                .setRecords(mongoTemplate.find(query, Post.class));
-//    }
+    /**
+     * 分页查询用户信息
+     *
+     * @param no      页码
+     * @param size    页面大小
+     * @param keyword 关键字
+     * @return 用户分页信息
+     */
+    @Override
+    public Page<User> queryUserProfile(Integer no, Integer size, String keyword) {
+        Query query = new Query();
+        if(keyword != null) {
+            query.addCriteria(Criteria.where("nickname")
+                    .regex("^" + keyword + ".*$"));
+        }
+        List<User> users = mongoTemplate.find(
+                query.skip((long) (no - 1) * size)
+                        .limit(size),
+                User.class
+        );
+        long total = mongoTemplate.count(query, User.class);
+        return new Page<User>()
+                .setNo(no)
+                .setSize(size)
+                .setRecords(users)
+                .setTotal(total);
+    }
 }

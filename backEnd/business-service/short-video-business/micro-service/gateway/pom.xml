@@ -16,21 +16,16 @@
 
     <dependencies>
 <!--        <dependency>-->
-<!--            <groupId>org.springdoc</groupId>-->
-<!--            <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>-->
-<!--            <version>2.2.0</version>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash; knife4j &ndash;&gt;-->
-<!--        <dependency>-->
 <!--            <groupId>com.github.xiaoymin</groupId>-->
 <!--            <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>-->
 <!--            <version>4.3.0</version>-->
 <!--        </dependency>-->
-        <dependency>
-            <groupId>com.github.xiaoymin</groupId>
-            <artifactId>knife4j-micro-spring-boot-starter</artifactId>
-            <version>3.0.3</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>jakarta.interceptor</groupId>-->
+<!--            <artifactId>jakarta.interceptor-api</artifactId>-->
+<!--            <version>2.1.0-RC2</version>-->
+<!--        </dependency>-->
+
         <!-- webmvc starter * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>

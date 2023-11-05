@@ -1,6 +1,7 @@
 package dao.user.repo;
 
 import dao.user.entity.User;
+import pojo.common.vo.Page;
 import pojo.user.dto.UserDto;
 
 /**
@@ -34,4 +35,14 @@ public interface UserRepository {
      * @return 是否更新成功
      */
     boolean UpdateUserProfile(UserDto userDto);
+
+    /**
+     * 分页查询用户信息
+     *
+     * @param no 页码
+     * @param size 页面大小
+     * @param keyword 关键字
+     * @return 用户分页信息
+     */
+    Page<User> queryUserProfile(Integer no, Integer size, String keyword);
 }

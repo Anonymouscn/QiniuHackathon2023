@@ -2,7 +2,6 @@ package cn.net.anonymous.user.service.impl;
 
 import api.sms.ISmsService;
 import api.user.IUserService;
-import dao.post.entity.Post;
 import dao.user.entity.User;
 import dao.user.repo.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -133,29 +132,16 @@ public class UserServiceImpl
         return userRepository.UpdateUserProfile(userDto);
     }
 
-//    /**
-//     * 获取/查询用户点赞的帖子
-//     *
-//     * @param no      页码
-//     * @param size    页面大小
-//     * @param keyword 关键词
-//     * @return 用户点赞的帖子分页数据
-//     */
-//    @Override
-//    public Page<Post> queryPostsLiked(Integer no, Integer size, String userId, String keyword) {
-//        return userRepository.queryPostsLiked(no, size, userId, keyword);
-//    }
-
-//    /**
-//     * 获取/查询用户收藏的帖子
-//     *
-//     * @param no      页码
-//     * @param size    页面大小
-//     * @param keyword 关键词
-//     * @return 用户收藏的帖子分页数据
-//     */
-//    @Override
-//    public Page<Post> queryPostsCollected(Integer no, Integer size, String userId, String keyword) {
-//        return userRepository.queryPostsCollected(no, size, userId, keyword);
-//    }
+    /**
+     * 分页查询用户信息
+     *
+     * @param no      页码
+     * @param size    页面大小
+     * @param keyword 关键字
+     * @return 用户分页信息
+     */
+    @Override
+    public Page<User> queryUser(Integer no, Integer size, String keyword) {
+        return userRepository.queryUserProfile(no, size, keyword);
+    }
 }

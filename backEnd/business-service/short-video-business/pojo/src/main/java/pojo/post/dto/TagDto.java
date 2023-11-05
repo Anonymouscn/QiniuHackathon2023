@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import pojo.common.dto.BaseDto;
-import system.valid.ValidGroup;
+import pojo.vaild.ValidGroup;
 import java.io.Serial;
 import java.io.Serializable;
 

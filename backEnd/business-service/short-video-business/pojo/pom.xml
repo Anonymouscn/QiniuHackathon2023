@@ -4,17 +4,6 @@
 
     <artifactId>pojo</artifactId>
     <name>pojo</name>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.net.anonymous</groupId>
-            <artifactId>global</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-    </dependencies>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
@@ -23,6 +12,14 @@
         <artifactId>short-video-business</artifactId>
         <version>1.0.0</version>
     </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.net.anonymous</groupId>
+            <artifactId>config</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>

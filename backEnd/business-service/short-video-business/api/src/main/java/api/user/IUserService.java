@@ -1,6 +1,7 @@
 package api.user;
 
 import dao.user.entity.User;
+import pojo.common.vo.Page;
 import pojo.user.dto.UserDto;
 import pojo.workflow.vo.ServerInfo;
 
@@ -75,4 +76,14 @@ public interface IUserService {
      * @return 是否更新成功
      */
     boolean updateProfile(UserDto userDto);
+
+    /**
+     * 分页查询用户信息
+     *
+     * @param no 页码
+     * @param size 页面大小
+     * @param keyword 关键字
+     * @return 用户分页信息
+     */
+    Page<User> queryUser(Integer no, Integer size, String keyword);
 }

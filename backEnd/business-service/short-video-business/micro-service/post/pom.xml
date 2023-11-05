@@ -39,12 +39,6 @@
             <artifactId>global</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!-- dao-mysql-starter * -->
-        <dependency>
-            <groupId>cn.net.anonymous</groupId>
-            <artifactId>dao-mysql-starter</artifactId>
-            <version>1.0.0</version>
-        </dependency>
     </dependencies>
 
     <build>

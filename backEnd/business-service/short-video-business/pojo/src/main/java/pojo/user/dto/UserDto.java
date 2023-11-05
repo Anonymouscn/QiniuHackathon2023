@@ -2,15 +2,10 @@ package pojo.user.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import lombok.experimental.SuperBuilder;
-import pojo.sms.dto.SmsDto;
-import system.valid.UserValidGroup;
-import system.valid.ValidGroup;
+import pojo.vaild.ValidGroup;
 import java.io.Serial;
 import java.io.Serializable;
 
@@ -43,7 +38,7 @@ public class UserDto
 
     /** 短信验证码 */
     @NotEmpty(message = "短信验证码不能为空",
-            groups = {UserValidGroup.Registry.class})
+            groups = {ValidGroup.Registry.class})
     @JsonProperty("code")
     private String code;
 

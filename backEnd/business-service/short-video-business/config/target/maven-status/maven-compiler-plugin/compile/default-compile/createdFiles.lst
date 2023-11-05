@@ -1,0 +1,12 @@
+config/JsonConfig.class
+config/RedissonConfig.class
+config/JsonConfig$LongIdDeserializer.class
+config/JsonConfig$ObjectIdSerializer.class
+config/CaffeineCacheConfig.class
+config/RedisProperties.class
+config/CorsConfig.class
+config/WebMvcConfig.class
+config/RedisProperties$Cluster.class
+config/RedisProperties$Single.class
+config/JsonConfig$ObjectIdDeserializer.class
+config/TransactionConfig.class

@@ -15,9 +15,12 @@
         <module>starter</module>
         <module>micro-service</module>
         <module>api</module>
-        <module>pojo</module>
         <module>dao</module>
         <module>doc</module>
+        <module>system</module>
+        <module>config</module>
+        <module>util</module>
+        <module>pojo</module>
     </modules>
 
     <properties>
@@ -36,7 +39,7 @@
         <bootstrap.version>4.0.4</bootstrap.version>
         <caffeine.version>3.1.8</caffeine.version>
         <dubbo.version>3.2.7</dubbo.version>
-        <knife4j.version>4.3.0</knife4j.version>
+        <knife4j.version>2.0.9</knife4j.version>
         <load-balanced.version>4.0.0</load-balanced.version>
         <gateway.version>4.0.0</gateway.version>
         <dubbo.version>3.2.7</dubbo.version>
@@ -50,11 +53,27 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
+            <version>4.3.0</version>
+        </dependency>
+
         <!-- bootstrap * -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
             <version>${bootstrap.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-commons</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-context</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- nacos * -->
         <dependency>
@@ -69,7 +88,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <scope>provided</scope>
         </dependency>
         <!-- guava * -->
         <dependency>

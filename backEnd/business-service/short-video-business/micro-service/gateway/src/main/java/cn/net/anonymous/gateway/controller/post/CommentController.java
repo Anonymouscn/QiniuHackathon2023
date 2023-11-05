@@ -15,7 +15,7 @@ import pojo.post.dto.CommentDto;
  * @version 1.0
  */
 @RestController
-@RequestMapping("/post/comment")
+@RequestMapping("/comment")
 public class CommentController {
 
     @DubboReference

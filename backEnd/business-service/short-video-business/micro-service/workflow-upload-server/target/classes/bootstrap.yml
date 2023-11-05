@@ -1,0 +1,55 @@
+spring:
+  redis:
+    password: 123456
+    single:
+      address: "redis://127.0.0.1:6379"
+      database: 7
+  kafka:
+    producer:
+      retries: 3
+      batch-size: 1000
+      buffer-memory: 33554432
+    consumer:
+      group-id: workflow-${spring.profiles.active}
+      auto-offset-reset: earliest
+      max-poll-records: 8000
+      enable-auto-commit: true
+      auto-commit-interval: 1000
+    bootstrap-servers: [localhost:9092]
+  application:
+    name: file-workflow-service
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.2.43:8848
+        namespace: cb95c626-d402-4552-a491-3ad4e5fb2553
+        group: ${spring.profiles.active}
+        prefix: ${spring.application.name}
+        file-extension: yml
+      discovery:
+        server-addr: ${spring.cloud.nacos.config.server-addr}
+        namespace: ${spring.cloud.nacos.config.namespace}
+        group: ${spring.profiles.active}
+dubbo:
+  application:
+    name: ${spring.application.name}
+    qosEnable: true
+    qosPort: 33398
+    qosAcceptForeignIp: false
+  registry:
+    check: false
+    address: nacos://${spring.cloud.nacos.config.server-addr}
+    cache-folder: /Users/anonymous/.dubbo/file-workflow-service
+  scan:
+    base-packages: service.impl
+  protocol:
+    name: tri
+    port: 26756
+  consumer:
+    check: false
+oss:
+  access-key: 0e0IoAab53nylaTxm2CAhBHqVmk56UU9pSH2wlnA
+  secret-key: iKVJD8F78reJDq8dOVVwEzOMQJeCj3YZEuCydWSb
+  bucket: qiniu-view-dev

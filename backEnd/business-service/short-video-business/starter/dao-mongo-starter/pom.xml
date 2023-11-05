@@ -4,6 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>dao-mongo-starter</artifactId>
     <name>dao-mongo-starter</name>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
 
     <parent>

@@ -45,12 +45,6 @@
             <artifactId>pojo</artifactId>
             <version>1.0.0</version>
         </dependency>
-<!--        &lt;!&ndash; dao-mysql-starter * &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>cn.net.anonymous</groupId>-->
-<!--            <artifactId>dao-mysql-starter</artifactId>-->
-<!--            <version>1.0.0</version>-->
-<!--        </dependency>-->
         <!-- global * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>

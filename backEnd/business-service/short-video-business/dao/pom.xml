@@ -15,11 +15,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>${mybatis-plus.version}</version>
-        </dependency>
-        <dependency>
             <groupId>cn.net.anonymous</groupId>
             <artifactId>dao-mongo-starter</artifactId>
             <version>1.0.0</version>

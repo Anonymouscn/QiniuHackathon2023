@@ -1,6 +1,7 @@
 package cn.net.anonymous.gateway.controller.post;
 
 import api.post.IPostService;
+import api.user.IUserService;
 import dao.post.entity.Post;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,9 @@ public class PostController {
 
     @DubboReference
     private IPostService postService;
+
+    @DubboReference
+    private IUserService userService;
 
     /**
      * 获取/搜索推荐帖子
@@ -70,6 +74,28 @@ public class PostController {
                                                    @PathVariable("size") Integer size,
                                                    @PathVariable(value = "keyword", required = false) String keyword) {
         return Result.success(postService.queryPostsCollected(no, size, "65464dcc41cd6b3f3186f766", keyword));
+    }
+
+    /**
+     * 收藏帖子
+     *
+     * @param postId 帖子 id
+     * @return 是否收藏成功
+     */
+    @PostMapping("/collect/{postId}")
+    public Result<?> collectPost(@PathVariable("postId") String postId) {
+        return Result.success();
+    }
+
+    /**
+     * 取消收藏帖子
+     *
+     * @param postId 帖子 id
+     * @return 是否取消收藏成功
+     */
+    @PostMapping("/collect/cancel/{postId}")
+    public Result<?> cancelCollectPost(@PathVariable("postId") String postId) {
+        return Result.success();
     }
 
     /**

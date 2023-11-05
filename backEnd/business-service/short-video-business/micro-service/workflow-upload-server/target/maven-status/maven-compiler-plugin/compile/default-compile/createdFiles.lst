@@ -1,0 +1,6 @@
+cn/net/anonymous/fileworkflowserver/service/impl/UploadServiceImpl.class
+cn/net/anonymous/fileworkflowserver/service/IUploadService.class
+cn/net/anonymous/fileworkflowserver/config/OssAccountConfig.class
+cn/net/anonymous/fileworkflowserver/controller/UploadController.class
+cn/net/anonymous/fileworkflowserver/service/impl/WorkflowServiceImpl.class
+cn/net/anonymous/fileworkflowserver/WorkflowUploadServerApplication.class

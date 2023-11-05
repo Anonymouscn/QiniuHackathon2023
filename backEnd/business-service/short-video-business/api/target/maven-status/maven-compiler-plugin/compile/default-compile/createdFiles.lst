@@ -1,0 +1,11 @@
+api/post/ICommentService.class
+api/user/ICollectService.class
+api/user/IMessageService.class
+api/user/ILikeService.class
+api/post/IPostService.class
+api/post/ITagService.class
+api/sms/ISmsService.class
+api/user/IUserService.class
+api/workflow/IWorkflowService.class
+api/workflow/IOssService.class
+api/log/ILogService.class

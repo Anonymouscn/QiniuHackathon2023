@@ -8,9 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import pojo.common.vo.Result;
 import pojo.user.dto.UserDto;
-import system.valid.ValidGroup;
-import vo.Result;
+import pojo.vaild.ValidGroup;
 
 /**
  * 用户基本信息 API 接口
@@ -46,23 +46,26 @@ public class UserController {
      * @return 用户基本信息是否更新成功
      */
     @PostMapping("/info/update")
-    public Result<?> updateBaseInfo(@RequestBody @Validated({ValidGroup.Update.class}) UserDto userDto) {
+    public Result<?> updateBaseInfo(@RequestBody @Validated({ValidGroup.Update.class})
+                                        UserDto userDto) {
         return userService.updateProfile(userDto) ?
                 Result.success() : Result.businessUpdateError();
     }
 
     /**
-     * 分页搜索用户
+     * 分页搜索用户 +
      *
      * @param no 页码
      * @param size 页面大小
      * @param keyword 关键字
      * @return 分页搜索结果
      */
-    @GetMapping("/search/{no}/{size}/{keyword}")
+    @GetMapping({"/search/{no}/{size}/{keyword}", "/search/{no}/{size}/",
+            "/search/{no}/{size}"})
     public Result<?> queryUser(@PathVariable("no") Integer no,
                                @PathVariable("size") Integer size,
-                               @PathVariable("keyword") String keyword) {
-        return Result.success();
+                               @PathVariable(value = "keyword", required = false)
+                                   String keyword) {
+        return Result.success(userService.queryUser(no, size, keyword));
     }
 }

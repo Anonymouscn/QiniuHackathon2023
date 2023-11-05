@@ -1,0 +1,78 @@
+{
+  "properties": [
+    {
+      "name": "dubbo.application.name",
+      "type": "java.lang.String",
+      "description": "Description for dubbo.application.name."
+    },
+    {
+      "name": "dubbo.application.qosEnable",
+      "type": "java.lang.String",
+      "description": "Description for dubbo.application.qosEnable."
+    },
+    {
+      "name": "dubbo.application.qosPort",
+      "type": "java.lang.String",
+      "description": "Description for dubbo.application.qosPort."
+    },
+    {
+      "name": "dubbo.application.qosAcceptForeignIp",
+      "type": "java.lang.String",
+      "description": "Description for dubbo.application.qosAcceptForeignIp."
+    },
+    {
+      "name": "dubbo.registry.check",
+      "type": "java.lang.String",
+      "description": "Description for dubbo.registry.check."
+    },
+    {
+      "name": "dubbo.registry.address",
+      "type": "java.lang.String",
+      "description": "Description for dubbo.registry.address."
+    },
+    {
+      "name": "dubbo.registry.cache-folder",
+      "type": "java.lang.String",
+      "description": "Description for dubbo.registry.cache-folder."
+    },
+    {
+      "name": "dubbo.scan.base-packages",
+      "type": "java.lang.String",
+      "description": "Description for dubbo.scan.base-packages."
+    },
+    {
+      "name": "dubbo.protocol.name",
+      "type": "java.lang.String",
+      "description": "Description for dubbo.protocol.name."
+    },
+    {
+      "name": "dubbo.protocol.port",
+      "type": "java.lang.String",
+      "description": "Description for dubbo.protocol.port."
+    },
+    {
+      "name": "dubbo.consumer.check",
+      "type": "java.lang.String",
+      "description": "Description for dubbo.consumer.check."
+    },
+    {
+      "name": "oss.access-key",
+      "type": "java.lang.String",
+      "description": "Description for oss.access-key."
+    },
+    {
+      "name": "oss.secret-key",
+      "type": "java.lang.String",
+      "description": "Description for oss.secret-key."
+    },
+    {
+      "name": "oss.bucket",
+      "type": "java.lang.String",
+      "description": "Description for oss.bucket."
+    },
+    {
+      "name": "oss.domain",
+      "type": "java.lang.String",
+      "description": "Description for oss.domain."
+    }
+  ] }

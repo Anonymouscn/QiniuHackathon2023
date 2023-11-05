@@ -32,17 +32,17 @@
             <groupId>cn.net.anonymous</groupId>
             <artifactId>api</artifactId>
             <version>1.0.0</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.baomidou</groupId>
-                    <artifactId>mybatis-plus-boot-starter</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <!-- pojo * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
             <artifactId>pojo</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!-- dao -->
+        <dependency>
+            <groupId>cn.net.anonymous</groupId>
+            <artifactId>dao</artifactId>
             <version>1.0.0</version>
         </dependency>
         <!-- global package * -->
@@ -67,18 +67,18 @@
 
     <build>
         <plugins>
-            <!-- maven plugin -->
+            <!-- build for maven -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>${maven-build.version}</version>
                 <configuration>
-                    <source>17</source>
-                    <target>17</target>
-                    <encoding>UTF-8</encoding>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${maven-build.encoding}</encoding>
                 </configuration>
             </plugin>
-            <!-- springboot plugin -->
+            <!-- build for springboot -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

@@ -26,6 +26,12 @@
             <artifactId>dao</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <!-- dao-mongo-starter -->
+        <dependency>
+            <groupId>cn.net.anonymous</groupId>
+            <artifactId>dao-mongo-starter</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

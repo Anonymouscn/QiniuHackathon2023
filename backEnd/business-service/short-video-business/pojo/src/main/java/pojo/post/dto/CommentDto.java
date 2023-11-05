@@ -3,14 +3,14 @@ package pojo.post.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import config.JsonConfig;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import org.bson.types.ObjectId;
 import pojo.common.dto.BaseDto;
-import system.config.JsonConfig;
-import system.valid.ValidGroup;
+import pojo.vaild.ValidGroup;
 import java.io.Serial;
 import java.io.Serializable;
 

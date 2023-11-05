@@ -1,7 +1,6 @@
 package cn.net.anonymous.post;
 
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -17,7 +16,6 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableDiscoveryClient
 @SpringBootApplication
 @ComponentScan({"cn.net.anonymous.post", "api", "system", "util", "dao"})
-@MapperScan("dao.*.mapper")
 public class PostApplication {
 
     public static void main(String[] args) {
