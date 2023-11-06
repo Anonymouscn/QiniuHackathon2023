@@ -30,9 +30,10 @@ public class CommentDto
     @Serial
     private static final long serialVersionUID = 1L;
 
-    /** 评论内容 */
-    @NotEmpty(message = "评论内容不能为空", groups = {ValidGroup.Insert.class})
-    private String content;
+    /** 回复评论 id */
+    @JsonSerialize(using = JsonConfig.ObjectIdSerializer.class)
+    @JsonDeserialize(using = JsonConfig.ObjectIdDeserializer.class)
+    private ObjectId parent;
 
     /** 帖子 id */
     @NotEmpty(message = "发布人id不能为空", groups = {ValidGroup.Insert.class})
@@ -40,6 +41,10 @@ public class CommentDto
     @JsonDeserialize(using = JsonConfig.ObjectIdDeserializer.class)
     @JsonProperty("post_by")
     private ObjectId postBy;
+
+    /** 评论内容 */
+    @NotEmpty(message = "评论内容不能为空", groups = {ValidGroup.Insert.class})
+    private String content;
 
     /** 发表用户id */
     @NotEmpty(message = "帖子id不能为空", groups = {ValidGroup.Insert.class})

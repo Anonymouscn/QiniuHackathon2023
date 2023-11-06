@@ -13,16 +13,19 @@
     </parent>
 
     <dependencies>
+        <!-- pojo * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
             <artifactId>pojo</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <!-- local cache starter * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
             <artifactId>local-cache-starter</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <!-- shared cache starter * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
             <artifactId>shared-cache-starter</artifactId>
@@ -33,10 +36,11 @@
             <artifactId>webmvc-starter</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <!-- dubbo (for hook framework) -->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo</artifactId>
-            <version>3.2.7</version>
+            <version>${dubbo.version}</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

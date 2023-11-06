@@ -2,6 +2,7 @@ package pojo.common.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import java.io.Serial;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
  * @author anonymous
  * @version 1.0
  */
+@Schema(name = "统一响应结果")
 @Data
 @Accessors(chain = true)
 public class Result<T>

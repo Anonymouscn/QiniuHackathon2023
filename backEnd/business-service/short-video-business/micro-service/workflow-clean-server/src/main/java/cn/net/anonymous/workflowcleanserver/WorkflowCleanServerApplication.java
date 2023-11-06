@@ -15,7 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableDubbo
 @EnableDiscoveryClient
 @SpringBootApplication
-@ComponentScan({"cn.net.anonymous.workflowcleanserver", "system.*", "api", "util", "dao"})
+@ComponentScan({"cn.net.anonymous.workflowcleanserver", "system.*", "api", "util", "config", "dao"})
 public class WorkflowCleanServerApplication {
 
     public static void main(String[] args) {

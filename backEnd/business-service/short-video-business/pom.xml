@@ -12,15 +12,24 @@
     <description>short video business backend</description>
 
     <modules>
-        <module>starter</module>
+        <!-- microservice package -->
         <module>micro-service</module>
+        <!-- application interface package -->
         <module>api</module>
+        <!-- data object package -->
         <module>dao</module>
-        <module>doc</module>
+        <!-- system package -->
         <module>system</module>
+        <!-- config package -->
         <module>config</module>
+        <!-- util package -->
         <module>util</module>
+        <!-- java object package -->
         <module>pojo</module>
+        <!-- dependence starter package -->
+        <module>starter</module>
+        <!-- develop document package -->
+        <module>doc</module>
     </modules>
 
     <properties>

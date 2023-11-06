@@ -14,13 +14,13 @@
     </parent>
 
     <dependencies>
-        <!-- pojo -->
+        <!-- pojo * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
             <artifactId>pojo</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!-- dao -->
+        <!-- dao * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
             <artifactId>dao</artifactId>

@@ -7,7 +7,7 @@ import java.io.Serial;
 import java.io.Serializable;
 
 /**
- * 服务器信息
+ * 视频上传服务器信息
  *
  * @author anonymous
  * @version 1.0

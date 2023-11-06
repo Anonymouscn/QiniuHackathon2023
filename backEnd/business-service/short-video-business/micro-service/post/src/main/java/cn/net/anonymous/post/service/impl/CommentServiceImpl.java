@@ -53,7 +53,7 @@ public class CommentServiceImpl
      */
     @Override
     public Comment replyComment(CommentDto commentDto) {
-        return null;
+        return commentRepository.replyComment(commentDto);
     }
 
     /**

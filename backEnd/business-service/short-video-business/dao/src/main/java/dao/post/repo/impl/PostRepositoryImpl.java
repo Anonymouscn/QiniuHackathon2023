@@ -204,6 +204,7 @@ public class PostRepositoryImpl
     @Override
     @Transactional
     public boolean deletePost(String[] postIds) {
+        // todo fix to ObjectId
         Query query = Query.query(
                 Criteria.where("postId")
                         .in(postIds, String.class)

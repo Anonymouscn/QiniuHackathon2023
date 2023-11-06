@@ -15,7 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableDubbo
 @EnableDiscoveryClient
 @SpringBootApplication
-@ComponentScan({"cn.net.anonymous.post", "api", "system", "util", "dao"})
+@ComponentScan({"cn.net.anonymous.post", "api", "system", "util", "config", "dao"})
 public class PostApplication {
 
     public static void main(String[] args) {

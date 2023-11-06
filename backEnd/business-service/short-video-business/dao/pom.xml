@@ -24,6 +24,7 @@
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
+        <!-- pojo * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
             <artifactId>pojo</artifactId>

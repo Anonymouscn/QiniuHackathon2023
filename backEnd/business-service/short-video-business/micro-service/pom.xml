@@ -13,15 +13,17 @@
     </parent>
 
     <modules>
+        <!-- business service cluster -->
         <module>gateway</module>
-        <module>workflow-upload-server</module>
         <module>log</module>
         <module>post</module>
         <module>sms</module>
         <module>user</module>
+        <!-- websocket state management cluster -->
         <module>websocket-worker</module>
         <module>websocket-monitor</module>
-        <!-- workflow 视频处理集群 -->
+        <!-- workflow video processing cluster -->
+        <module>workflow-upload-server</module>
         <module>workflow-monitor-server</module>
         <module>workflow-slice-server</module>
         <module>workflow-convert-server</module>

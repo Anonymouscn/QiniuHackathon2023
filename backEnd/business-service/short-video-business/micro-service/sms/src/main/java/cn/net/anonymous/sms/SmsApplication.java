@@ -17,7 +17,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableDiscoveryClient
 @SpringBootApplication
 @EnableConfigurationProperties
-@ComponentScan({"cn.net.anonymous.sms", "api", "system", "util"})
+@ComponentScan({"cn.net.anonymous.sms", "api", "system", "util", "config"})
 public class SmsApplication {
 
     public static void main(String[] args) {

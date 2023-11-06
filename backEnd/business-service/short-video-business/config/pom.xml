@@ -23,16 +23,17 @@
             <artifactId>dao-mongo-starter</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <!-- 本地缓存依赖包 -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
             <artifactId>local-cache-starter</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <!-- 集群共享缓存依赖包 -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
             <artifactId>shared-cache-starter</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>
-
 </project>

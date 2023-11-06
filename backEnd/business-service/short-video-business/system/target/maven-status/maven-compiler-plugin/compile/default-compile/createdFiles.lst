@@ -1,7 +1,0 @@
-system/async/LogThreadPoolConfig.class
-system/async/TaskExecutePool.class
-system/hook/CustomDubboFrameworkModel.class
-system/async/ThreadPoolConfig.class
-system/exception/handler/GlobalExceptionHandler.class
-system/async/ServiceThreadPoolConfig.class
-system/async/SystemThreadPoolConfig.class

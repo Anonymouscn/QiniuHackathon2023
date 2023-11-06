@@ -5,7 +5,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
-import pojo.common.vo.Result;
 
 /**
  * 牛牛视界 - 用户服务
@@ -16,7 +15,7 @@ import pojo.common.vo.Result;
 @EnableDubbo
 @EnableDiscoveryClient
 @SpringBootApplication
-@ComponentScan({"cn.net.anonymous.user", "dao.*.repo", "system", "api", "util"})
+@ComponentScan({"cn.net.anonymous.user", "dao.*.repo", "system", "api", "util", "config"})
 public class UserApplication {
 
     public static void main(String[] args) {

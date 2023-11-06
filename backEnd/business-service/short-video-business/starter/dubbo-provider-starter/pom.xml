@@ -29,7 +29,7 @@
             <artifactId>kotlin-stdlib</artifactId>
             <version>1.8.21</version>
         </dependency>
-
+        <!-- protobuf (for support dubbo rpc protocol) -->
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>

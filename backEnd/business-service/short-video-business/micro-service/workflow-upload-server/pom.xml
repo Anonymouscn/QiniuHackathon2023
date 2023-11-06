@@ -45,10 +45,19 @@
             <artifactId>pojo</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!-- global package * -->
         <dependency>
             <groupId>cn.net.anonymous</groupId>
-            <artifactId>global</artifactId>
+            <artifactId>system</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.net.anonymous</groupId>
+            <artifactId>config</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.net.anonymous</groupId>
+            <artifactId>util</artifactId>
             <version>1.0.0</version>
         </dependency>
         <!-- qi niu oss * -->

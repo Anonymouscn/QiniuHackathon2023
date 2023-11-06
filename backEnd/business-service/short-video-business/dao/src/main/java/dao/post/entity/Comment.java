@@ -16,6 +16,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 评论实体
@@ -69,5 +71,9 @@ public class Comment
 
     /** 评论回复 */
     @Field("replies")
-    private Comment[] replies;
+    private List<Comment> replies;
+
+    public Comment() {
+        this.replies = new ArrayList<>();
+    }
 }
