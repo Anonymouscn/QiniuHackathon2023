@@ -1,0 +1,41 @@
+.container {
+    width: 100%;
+    height: 100%;
+}
+.container .arco-list-content {
+    overflow-x: hidden;
+}
+.container .arco-card-meta-title {
+    font-size: 14px;
+}
+.arco-list-col {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.arco-list-item {
+    width: 33%;
+}
+.block-title {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+}
+.list-wrap .list-row {
+    align-items: stretch;
+}
+.list-wrap .list-row .list-col {
+    margin-bottom: 16px;
+}
+.list-wrap .arco-space {
+    width: 100%;
+    border-radius: 4px;
+}
+.list-wrap .arco-space .arco-space-item:last-child {
+    flex: 1;
+    border-radius: 4px;
+}
+.arco-card-size-medium {
+    font-size: 14px;
+    border-radius: 6px;
+}
