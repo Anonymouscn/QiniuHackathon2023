@@ -5,6 +5,7 @@
 
 ### Jetbrains ###
 .idea
+target/
 .target
 *.iws
 *.iml
