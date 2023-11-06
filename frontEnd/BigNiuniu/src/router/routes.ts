@@ -5,6 +5,7 @@ import NoAuthView from "../views/common/NoAuthView.vue";
 import UserView from "../views/modiles/user/UserView.vue";
 import LoginView from "../views/modiles/login/LoginView.vue";
 import RegistertView from "../views/modiles/login/register/RegisterView.vue";
+import PhoneLoginView from "../views/modiles/login/phoneLogin/PhoneLoginView.vue";
 import GlobalVideo from "../components/GlobalVideo.vue";
 import UploadView from "../views/modiles/upload/UploadView.vue";
 import ExploreView from "../views/modiles/explore/ExploreView.vue";
@@ -46,6 +47,22 @@ export const routes: Array<RouteRecordRaw> = [
     path: "/register",
     name: "register",
     component: RegistertView,
+    meta: {
+      hideInMenu: true,
+    },
+  },
+  {
+    path: "/phoneLogin",
+    name: "phoneLong",
+    component: PhoneLoginView,
+    meta: {
+      hideInMenu: true,
+    },
+  },
+  {
+    path: "/upload",
+    name: "upload",
+    component: UploadView,
     meta: {
       hideInMenu: true,
     },

@@ -25,9 +25,9 @@
                   flex-direction: column;
                 "
               >
-                <span style="margin-top: 2px; color: blue"
-                  >我的名字叫自来水</span
-                >
+                <span style="margin-top: 2px; color: #0000ff">{{
+                  getuserlogin.username
+                }}</span>
                 <span style="margin-top: 8px"
                   >{{ index.title }} <a href="">#{{ index.tag }}</a></span
                 >
@@ -67,7 +67,7 @@ const scrollbarEl = ref(null);
 // 定义对 Scrollbar 组件的引用
 const scrollbarRef = ref(null);
 
-const userInfo = reactive({
+const getuserlogin = reactive({
   username: "我的名字叫自来水",
   avatar: "",
 });

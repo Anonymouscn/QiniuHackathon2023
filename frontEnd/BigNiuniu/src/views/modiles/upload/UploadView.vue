@@ -25,7 +25,7 @@
       maxLength="6"
       minLength="2"
       field="image"
-      label="话题"
+      label="上传封面"
       feedback
     >
       <a-upload
@@ -74,20 +74,19 @@
         </template>
       </a-upload>
     </a-form-item>
-    <a-form-item
-      field="post"
-      label="Post"
-      help="This is custom message"
-      extra="This is extra text"
-      feedback
-    >
-      <a-input-number v-model="form.post" />
-    </a-form-item>
+    <!--    <a-form-item-->
+    <!--      field="post"-->
+    <!--      label="Post"-->
+    <!--      help="This is custom message"-->
+    <!--      extra="This is extra text"-->
+    <!--      feedback-->
+    <!--    >-->
+    <!--      <a-input-number v-model="form.post" />-->
+    <!--    </a-form-item>-->
     <a-form-item
       field="tags"
-      label="Tags"
-      help="This is custom message"
-      extra="This is extra text"
+      label="标签"
+      help="正确的标签可以帮助您上热门！"
       feedback
     >
       <a-input-tag
@@ -95,28 +94,8 @@
         placeholder="please enter your post..."
       />
     </a-form-item>
-    <a-form-item
-      field="section"
-      label="Section"
-      :rules="[{ match: /section one/, message: 'must select one' }]"
-      feedback
-    >
-      <a-select v-model="form.section" placeholder="Please select ...">
-        <a-option value="section one">Section One</a-option>
-        <a-option value="section two">Section Two</a-option>
-        <a-option value="section three">Section Three</a-option>
-      </a-select>
-    </a-form-item>
-    <a-form-item label="DateRange" feedback>
-      <a-range-picker></a-range-picker>
-    </a-form-item>
-
-    <a-form-item field="date" label="Date" feedback>
-      <a-date-picker></a-date-picker>
-    </a-form-item>
-
-    <a-form-item field="time" label="Time" feedback>
-      <a-time-picker></a-time-picker>
+    <a-form-item field="tags" label="视频" feedback>
+      <a-upload draggable action="/" />
     </a-form-item>
   </a-form>
 </template>
@@ -130,7 +109,7 @@ export default {
       post: undefined,
       talk: undefined,
       image: undefined,
-      tags: ["tag1"],
+      tags: ["生活"],
       section: "",
     });
 

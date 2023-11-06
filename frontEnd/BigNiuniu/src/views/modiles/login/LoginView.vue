@@ -23,6 +23,9 @@
         <router-link to="/register">
           <a-button type="primary" style="width: 120px"> 注册 </a-button>
         </router-link>
+        <router-link to="/phoneLogin">
+          <a-button type="primary" style="width: 120px"> 手机号登录 </a-button>
+        </router-link>
         <a-button type="primary" html-type="submit" style="width: 120px">
           登录
         </a-button>

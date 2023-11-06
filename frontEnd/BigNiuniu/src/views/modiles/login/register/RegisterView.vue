@@ -1,5 +1,5 @@
 <template>
-  <div id="userLoginView">
+  <div id="registerView">
     <h1 style="margin-bottom: 16px; display: flex; align-items: center">
       <img src="../../../../assets/niuniu.svg" /> 用户注册
     </h1>
@@ -10,23 +10,13 @@
       :model="form"
       @submit="handleSubmit"
     >
-      <a-form-item required field="userAccount" label="账号">
+      <a-form-item required field="账号" label="账号">
         <a-input placeholder="请输入账号" />
       </a-form-item>
-      <a-form-item
-        required
-        field="userPassword"
-        tooltip="密码不少于 8 位"
-        label="密码"
-      >
+      <a-form-item required field="密码" tooltip="密码不少于 8 位" label="密码">
         <a-input-password placeholder="请输入密码" />
       </a-form-item>
-      <a-form-item
-        required
-        field="userPassword"
-        tooltip="密码不少于 8 位"
-        label="密码"
-      >
+      <a-form-item required field="密码" tooltip="密码不少于 8 位" label="密码">
         <a-input-password placeholder="请再次输入密码" />
       </a-form-item>
       <div class="login-input">
@@ -69,7 +59,7 @@ const handleSubmit = async () => {
 };
 </script>
 <style scoped>
-#userLoginView {
+#registerView {
   width: 50%;
   height: 50%;
   display: flex;

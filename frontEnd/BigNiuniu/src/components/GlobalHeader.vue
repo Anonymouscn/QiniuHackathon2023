@@ -6,10 +6,12 @@
     </a-col>
     <div class="header-input">
       <a-button class="avatar" type="primary" shape="circle" size="lage">
-        <img
-          src="../assets/images/pushFile.svg"
-          style="width: 40px; height: 40px"
-        />
+        <router-link to="/upload">
+          <img
+            src="../assets/images/pushFile.svg"
+            style="width: 40px; height: 40px"
+          />
+        </router-link>
       </a-button>
       <a-button class="avatar" shape="circle" size="lage">
         <span class="mg-num">99+</span>
