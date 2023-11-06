@@ -46,9 +46,9 @@ onMounted(() => {
   const observer = new IntersectionObserver(
     ([entry]) => {
       if (entry.isIntersecting) {
-        // player?.play();
+        player?.play();
       } else {
-        // player?.pause();
+        player?.pause();
       }
     },
     {
