@@ -35,8 +35,8 @@ public class TagController {
     /**
      * 获取 or 搜索热门标签接口 +
      *
-     * @param no 页码
-     * @param size 页码大小
+     * @param no 分页页码
+     * @param size 分页大小
      * @param keyword 关键词
      * @return 热门标签分页数据
      */

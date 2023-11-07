@@ -5,6 +5,7 @@ import dao.post.entity.Tag;
 import dao.post.repo.TagRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.bson.types.ObjectId;
 import pojo.common.vo.Page;
 import java.util.List;
 
@@ -43,6 +44,17 @@ public class TagServiceImpl
     @Override
     public List<Tag> addTag(String[] names) {
         return tagRepository.addTag(names);
+    }
+
+    /**
+     * 统计标签
+     *
+     * @param tagNameList 标签名列表
+     * @return 是否统计成功
+     */
+    @Override
+    public boolean summaryTag(List<String> tagNameList, ObjectId postId) {
+        return tagRepository.summaryTag(tagNameList, postId);
     }
 
     /**

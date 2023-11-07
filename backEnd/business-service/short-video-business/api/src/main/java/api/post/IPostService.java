@@ -20,7 +20,7 @@ public interface IPostService {
      * @param size 页面大小
      * @return 推荐帖子分页结果
      */
-    Page<PostVo> queryRecommendPost(Integer no, Integer size, String userId, String keyword);
+    Page<Post> queryRecommendPost(Integer no, Integer size, String userId, String keyword);
 
     /**
      * 分页查询标签相关帖子

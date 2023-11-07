@@ -3,6 +3,7 @@ package dao.post.repo.impl;
 import dao.post.entity.Comment;
 import dao.post.repo.CommentRepository;
 import lombok.RequiredArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -37,8 +38,11 @@ public class CommentRepositoryImpl
     public Page<Comment> queryComment(String postId, Integer no, Integer size) {
         if(!Pattern.matches("^[a-f0-9]{24}$", postId))
             throw new RuntimeException("非法id");
-        Query query = Query.query(Criteria.where("post_id").is(postId));
-        List<Comment> comments = mongoTemplate.find(query.skip((long) (no - 1) * size).limit(size), Comment.class);
+        Query query = Query.query(Criteria.where("post_id").is(new ObjectId(postId)));
+        List<Comment> comments = mongoTemplate.find(
+                query.skip((long) (no - 1) * size).limit(size),
+                Comment.class,
+                "doc_comment");
         long total = mongoTemplate.count(query, Comment.class);
         return new Page<Comment>()
                 .setNo(no)
@@ -71,8 +75,11 @@ public class CommentRepositoryImpl
      */
     @Override
     public Comment replyComment(CommentDto commentDto) {
-
-        return null;
+        Comment comment = mongoTemplate.findOne(
+                Query.query(Criteria.where("_id").is(new ObjectId(commentDto.getParent()))), Comment.class, "doc_comment");
+        if(comment == null) throw new RuntimeException("评论不存在");
+        comment.getReplies().add(new Comment().setContent(commentDto.getContent()));
+        return mongoTemplate.save(comment, "doc_comment");
     }
 
     /**
@@ -83,7 +90,6 @@ public class CommentRepositoryImpl
      */
     @Override
     public Boolean deleteComment(String commentId) {
-
         return null;
     }
 }

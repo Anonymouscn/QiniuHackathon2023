@@ -91,5 +91,7 @@ public class Post
     public Post() {
         this.isDraft = 1;
         this.resourceUrl = new ArrayList<>();
+        this.likes = 0L;
+        this.shares = 0L;
     }
 }

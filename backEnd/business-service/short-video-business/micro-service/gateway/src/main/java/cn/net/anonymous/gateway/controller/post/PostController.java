@@ -13,6 +13,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import pojo.common.vo.Page;
 import pojo.common.vo.Result;
@@ -51,7 +52,7 @@ public class PostController {
                             description = "页面大小", in = ParameterIn.PATH,
                             example = "10"),
                     @Parameter(name = "keyword", description = "搜索关键词",
-                            in = ParameterIn.PATH, example = "iPhone 15")
+                            in = ParameterIn.QUERY, example = "iPhone 15")
             }
     )
     @ApiResponses(
@@ -61,10 +62,10 @@ public class PostController {
                     })
             }
     )
-    @GetMapping("/recommend/{no}/{size}/{keyword}")
-    public Result<Page<PostVo>> queryRecommendPost(@PathVariable("no") Integer no,
+    @GetMapping("/recommend/{no}/{size}")
+    public Result<Page<Post>> queryRecommendPost(@PathVariable("no") Integer no,
                                                    @PathVariable("size") Integer size,
-                                                   @PathVariable(value = "keyword", required = false) String keyword) {
+                                                   @RequestParam(value = "keyword", required = false) String keyword) {
         return Result.success(postService.queryRecommendPost(no, size, "65464dcc41cd6b3f3186f766", keyword));
     }
 
@@ -129,11 +130,11 @@ public class PostController {
                     })
             }
     )
-    @GetMapping({"/like/{no}/{size}/{keyword}", "/like/{no}/{size}/", "/like/{no}/{size}"})
+    @GetMapping({"/like/{no}/{size}"})
     public Result<Page<Post>> queryLikedPost(@PathVariable("no") Integer no,
                                              @PathVariable("size") Integer size,
-                                             @PathVariable(value = "keyword", required = false) String keyword) {
-        return Result.success(postService.queryPostsLiked(no, size, "65464dcc41cd6b3f3186f766", keyword));
+                                             @RequestParam(value = "keyword", required = false) String keyword) {
+        return Result.success(postService.queryPostsLiked(no, size, "6549691eeb684f31b1665ce5", keyword));
     }
 
     /**
@@ -161,10 +162,10 @@ public class PostController {
                     })
             }
     )
-    @GetMapping({"/collect/{no}/{size}/{keyword}", "/collect/{no}/{size}/", "/collect/{no}/{size}"})
+    @GetMapping({"/collect/{no}/{size}"})
     public Result<Page<Post>> queryCollectedPost(@PathVariable("no") Integer no,
                                                    @PathVariable("size") Integer size,
-                                                   @PathVariable(value = "keyword", required = false) String keyword) {
+                                                   @RequestParam(value = "keyword", required = false) String keyword) {
         return Result.success(postService.queryPostsCollected(no, size, "65464dcc41cd6b3f3186f766", keyword));
     }
 
@@ -187,7 +188,7 @@ public class PostController {
     }
 
     /**
-     * 提交 (发布) 帖子接口
+     * 提交 (发布) 帖子接口 +
      *
      * @return 帖子 vo
      */
@@ -205,7 +206,8 @@ public class PostController {
             }
     )
     @PostMapping("/submit")
-    public Result<PostVo> submitPost(@RequestBody PostDto postDto) {
+    public Result<PostVo> submitPost(@RequestBody @Validated PostDto postDto) {
+        System.out.println(postDto.getContent());
         return Result.success(postService.submitPost(postDto));
     }
 

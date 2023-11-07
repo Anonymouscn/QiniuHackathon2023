@@ -15,7 +15,6 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import pojo.common.vo.Page;
 import java.util.Arrays;
 import java.util.List;
@@ -45,6 +44,28 @@ public class PostRepositoryImpl
     private final Executor logExecutor;
 
     /**
+     * @param no      分页页码
+     * @param size    分页大小
+     * @param keyword 关键词
+     * @return 所有帖子分页数据
+     */
+    @Override
+    public Page<Post> queryAllPost(Integer no, Integer size, String keyword) {
+        Query query = Query.query(Criteria.where("is_usable").is(1));
+        List<Post> list = mongoTemplate.find(query.skip((long) (no - 1) * size), Post.class, "doc_post");
+        list.parallelStream().forEach(s -> {
+            long likes = mongoTemplate.count(Query.query(Criteria.where("post_id").is(s.getPostId())), Likes.class, "doc_likes");
+            s.setLikes(likes);
+        });
+        long count = mongoTemplate.count(query, Post.class, "doc_post");
+        return new Page<Post>()
+                .setNo(no)
+                .setSize(size)
+                .setRecords(list)
+                .setTotal(count);
+    }
+
+    /**
      * 分页查询标签相关帖子
      *
      * @param no      页码
@@ -68,14 +89,18 @@ public class PostRepositoryImpl
                     ));
         }
         List<Classification> classifications =
-                mongoTemplate.find(queryClassifications, Classification.class);
+                mongoTemplate.find(queryClassifications, Classification.class, "doc_classification_post_tag");
         Query query = Query.query(
-                Criteria.where("post_id")
+                Criteria.where("_id")
                         .in(classifications
                                 .parallelStream()
                                 .map(Classification::getPostId)
                                 .collect(Collectors.toList())));
         List<Post> list = mongoTemplate.find(query.skip((long) (no - 1) * size), Post.class);
+        list.parallelStream().forEach(s -> {
+            long likes = mongoTemplate.count(Query.query(Criteria.where("post_id").is(s.getPostId())), Likes.class, "doc_likes");
+            s.setLikes(likes);
+        });
         long total = mongoTemplate.count(query, Post.class);
         return new Page<Post>()
                 .setNo(no)
@@ -156,11 +181,8 @@ public class PostRepositoryImpl
      */
     @Override
     public Post getPostById(String postId) {
-        Query query = Query.query(
-                Criteria.where("postId")
-                        .is(postId)
-        );
-        return mongoTemplate.findOne(query, Post.class);
+        System.out.println(postId);
+        return mongoTemplate.findById(new ObjectId(postId), Post.class, "doc_post");
     }
 
     /**
@@ -171,7 +193,15 @@ public class PostRepositoryImpl
      */
     @Override
     public Post saveOrUpdatePost(Post post) {
-        return mongoTemplate.save(post);
+        return mongoTemplate.save(post, "doc_post");
+    }
+
+    @Override
+    public boolean updatePostResource(String postId, String playlistUrl, List<String> resources) {
+        return mongoTemplate.updateFirst(
+                Query.query(Criteria.where("_id").is(new ObjectId(postId))),
+                Update.update("playlist_url", playlistUrl).set("resource_url", resources).set("is_usable", 1),
+                Post.class).getModifiedCount() > 0;
     }
 
     /**
@@ -183,8 +213,8 @@ public class PostRepositoryImpl
     @Override
     public boolean deletePost(String postId) {
         Query query = Query.query(
-                Criteria.where("postId")
-                        .is(postId)
+                Criteria.where("_id")
+                        .is(new ObjectId(postId))
                         .and("is_delete")
                         .is(0)
         );
@@ -202,20 +232,24 @@ public class PostRepositoryImpl
      * @return 是否删除成功
      */
     @Override
-    @Transactional
+//    @Transactional
     public boolean deletePost(String[] postIds) {
-        // todo fix to ObjectId
+        List<ObjectId> targets =
+                Arrays.stream(postIds)
+                        .parallel()
+                        .map(ObjectId::new).toList();
         Query query = Query.query(
-                Criteria.where("postId")
-                        .in(postIds, String.class)
+                Criteria.where("_id")
+                        .in(targets, ObjectId.class)
                         .and("is_delete")
                         .is(0)
         );
         Update update = Update.update("is_delete", 1);
-        if(mongoTemplate.updateMulti(query, update, Post.class).getModifiedCount() <= 0) {
+        long count = (mongoTemplate.updateMulti(query, update, Post.class, "doc_post").getModifiedCount());
+        if(count <= 0) {
             return false;
         }
-        if(mongoTemplate.updateFirst(query, update, Post.class).getModifiedCount() != postIds.length) {
+        if(count != postIds.length) {
             throw new RuntimeException("帖子删除失败");
         }
         return true;

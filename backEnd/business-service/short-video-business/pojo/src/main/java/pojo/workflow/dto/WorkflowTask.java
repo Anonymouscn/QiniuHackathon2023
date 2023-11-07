@@ -2,6 +2,8 @@ package pojo.workflow.dto;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.bson.types.ObjectId;
+
 import java.io.File;
 import java.io.Serial;
 import java.io.Serializable;
@@ -79,15 +81,15 @@ public class WorkflowTask
 
     // =================== 工厂构造 ==================== //
 
-    public static WorkflowTask generateTask(File file, String originName) {
-        return generateTask(file, originName,"m3u8");
+    public static WorkflowTask generateTask(String taskId, File file, String originName) {
+        return generateTask(taskId, file, originName,"m3u8");
     }
 
-    public static WorkflowTask generateTask(File file, String originName, String targetType) {
-        return generateTask(file, originName, "mp4", targetType);
+    public static WorkflowTask generateTask(String taskId, File file, String originName, String targetType) {
+        return generateTask(taskId, file, originName, "mp4", targetType);
     }
 
-    public static WorkflowTask generateTask(File file, String originName, String convertType, String targetType) {
+    public static WorkflowTask generateTask(String taskId, File file, String originName, String convertType, String targetType) {
         String fullName = file.getName();
         int endIdx = fullName.lastIndexOf('.');
         String name = fullName;
@@ -99,7 +101,7 @@ public class WorkflowTask
         return new WorkflowTask()
                 .setOriginName(originName)
                 .setTaskStateKey("state-" + originName)
-                .setTaskId(UUID.randomUUID().toString())
+                .setTaskId(taskId)
                 .setFolder(file.getParent())
                 .setSourceName(name)
                 .setSourceType(type)

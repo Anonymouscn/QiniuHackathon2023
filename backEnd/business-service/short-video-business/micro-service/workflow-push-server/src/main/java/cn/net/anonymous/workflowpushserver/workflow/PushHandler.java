@@ -9,6 +9,7 @@ import com.qiniu.storage.Region;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.util.Auth;
+import dao.post.repo.PostRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -48,6 +49,8 @@ public class PushHandler
     private final OssAccountConfig config;
 
     private final KafkaTemplate<String, String> kafkaTemplate;
+
+    private final PostRepository postRepository;
 
     private UploadManager manager;
 
@@ -136,7 +139,7 @@ public class PushHandler
             String uri = "";
             try {
                 FileReader reader = new FileReader(listFile);
-                BufferedReader bufferedReader = new BufferedReader(reader);;
+                BufferedReader bufferedReader = new BufferedReader(reader);
                 CharArrayWriter fixCache = new CharArrayWriter();
                 String line;
                 while ((line = bufferedReader.readLine()) != null) {
@@ -162,9 +165,14 @@ public class PushHandler
             } catch (Exception e) {
                 log.info("[播放列表上传成功] - {}", uri);
             }
+            String finalUri = uri;
+            // 保存帖子视频信息
+            serviceExecutor.execute(() -> {
+                postRepository.updatePostResource(task.getPostId(), finalUri, uploadInfo.values().stream().toList());
+            });
             // 通知 Monitor 推送任务完成
             log.info("[播放列表上传成功] - {}", uri);
-//            kafkaTemplate.send("workflow_push_ack_topic", JSONObject.toJSONString(task));
+            kafkaTemplate.send("workflow_push_ack_topic", JSONObject.toJSONString(task));
         });
     }
 

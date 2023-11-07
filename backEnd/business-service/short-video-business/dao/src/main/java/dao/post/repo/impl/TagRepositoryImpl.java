@@ -1,9 +1,11 @@
 package dao.post.repo.impl;
 
 import com.google.common.base.Strings;
+import dao.post.entity.Classification;
 import dao.post.entity.Tag;
 import dao.post.repo.TagRepository;
 import lombok.RequiredArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -11,9 +13,9 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import pojo.common.vo.Page;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * 标签数据接口实现
@@ -77,12 +79,63 @@ public class TagRepositoryImpl
     }
 
     /**
+     * 统计标签
+     *
+     * @param tagList 标签列表
+     * @return 是否统计成功
+     */
+    @Override
+//    @Transactional(rollbackFor = {RuntimeException.class, Exception.class})
+    public boolean summaryTag(List<String> tagList, ObjectId postId) {
+        List<Tag> insertList = Collections.synchronizedList(new ArrayList<>());
+        tagList.stream()
+                .parallel()
+                .forEach(s -> {
+                    Tag tag = mongoTemplate.findOne(Query.query(Criteria.where("name").is(s)), Tag.class);
+                    // 已存在标签更新引用次数
+                    if(tag != null) {
+                        tag.setRefs(tag.getRefs() + 1);
+                        mongoTemplate.save(tag);
+                        long count = mongoTemplate.count(
+                                Query.query(
+                                        Criteria.where("post_id")
+                                                .is(postId)
+                                                .and("tag_id")
+                                                .is(tag.getTagId())
+                                ),
+                                Classification.class,
+                                "doc_classification_post_tag");
+                        System.out.println(count);
+                        if(count == 0) {
+                            mongoTemplate.save(new Classification().setTagId(tag.getTagId()).setPostId(postId));
+                        }
+                    // 不存在则创建标签
+                    } else {
+                        insertList.add(new Tag().setName(s).setRefs(1L));
+                    }
+                });
+        // 批量插入新标签
+        if(!insertList.isEmpty()) {
+            mongoTemplate.insert(insertList, "doc_tag");
+            mongoTemplate.insert(
+                    insertList.stream()
+                            .parallel()
+                            .map(s -> new Classification()
+                                    .setTagId(s.getTagId())
+                                    .setPostId(postId))
+                            .collect(Collectors.toList()), "doc_classification_post_tag"
+            );
+        }
+        return true;
+    }
+
+    /**
      * 删除标签
      *
      * @param tagId 标签 id 列表
      * @return 是否删除成功
      */
-    @Transactional
+//    @Transactional
     @Override
     public boolean DropTag(String[] tagId) {
         if(mongoTemplate.remove(

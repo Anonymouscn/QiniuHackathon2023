@@ -3,11 +3,14 @@ package dao.workflow.repo.impl;
 import dao.workflow.entity.Task;
 import dao.workflow.repo.TaskRepository;
 import lombok.RequiredArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * 工作流任务信息数据接口实现
@@ -30,10 +33,7 @@ public class TaskRepositoryImpl
      */
     @Override
     public Task getTask(String taskId) {
-        return mongoTemplate.findOne(
-                Query.query(Criteria.where("taskId").is(taskId)),
-                Task.class
-        );
+        return mongoTemplate.findById(new ObjectId(taskId), Task.class);
     }
 
     /**
@@ -55,7 +55,7 @@ public class TaskRepositoryImpl
     @Override
     public void setState(String taskId, Integer state) {
         mongoTemplate.updateFirst(
-                Query.query(Criteria.where("taskId").is(taskId)),
+                Query.query(Criteria.where("_id").is(new ObjectId(taskId))),
                 Update.update("state", state),
                 Task.class
         );
@@ -70,5 +70,13 @@ public class TaskRepositoryImpl
     public void iterativeVersion(String taskId) {
         Task task = getTask(taskId);
         mongoTemplate.save(task.setLatest(task.getLatest() + 1).setState(0));
+    }
+
+    @Override
+    public boolean updateResources(String taskId, String playlistUrl, List<String> resources) {
+        return mongoTemplate.updateFirst(
+                Query.query(Criteria.where("_id").is(new ObjectId(taskId))),
+                Update.update("playlist_url", playlistUrl).set("resources_url", resources),
+                Task.class).getModifiedCount() > 0;
     }
 }

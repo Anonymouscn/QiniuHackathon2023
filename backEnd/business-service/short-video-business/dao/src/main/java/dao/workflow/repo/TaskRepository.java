@@ -1,6 +1,9 @@
 package dao.workflow.repo;
 
 import dao.workflow.entity.Task;
+import org.bson.types.ObjectId;
+
+import java.util.List;
 
 /**
  * 工作流任务信息数据接口
@@ -39,4 +42,7 @@ public interface TaskRepository {
      * @param taskId 任务 id
      */
     void iterativeVersion(String taskId);
+
+
+    boolean updateResources(String taskId, String playlistUrl, List<String> resources);
 }

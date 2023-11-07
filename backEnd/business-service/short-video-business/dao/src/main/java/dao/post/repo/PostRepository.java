@@ -3,6 +3,8 @@ package dao.post.repo;
 import dao.post.entity.Post;
 import pojo.common.vo.Page;
 
+import java.util.List;
+
 /**
  * 帖子数据接口
  *
@@ -10,6 +12,15 @@ import pojo.common.vo.Page;
  * @version 1.0
  */
 public interface PostRepository {
+
+    /**
+     *
+     * @param no 分页页码
+     * @param size 分页大小
+     * @param keyword 关键词
+     * @return 所有帖子分页数据
+     */
+    Page<Post> queryAllPost(Integer no, Integer size, String keyword);
 
     /**
      * 分页查询标签相关帖子
@@ -58,6 +69,9 @@ public interface PostRepository {
      * @return 保存/修改后帖子
      */
    Post saveOrUpdatePost(Post post);
+
+
+   boolean updatePostResource(String postId, String playlistUrl, List<String> resources);
 
     /**
      * 删除帖子

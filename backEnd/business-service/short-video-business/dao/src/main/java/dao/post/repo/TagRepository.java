@@ -1,6 +1,7 @@
 package dao.post.repo;
 
 import dao.post.entity.Tag;
+import org.bson.types.ObjectId;
 import pojo.common.vo.Page;
 import java.util.List;
 
@@ -29,6 +30,14 @@ public interface TagRepository {
      * @return 标签
      */
     List<Tag> addTag(String[] names);
+
+    /**
+     * 统计标签
+     *
+     * @param tagList 标签列表
+     * @return 是否统计成功
+     */
+    boolean summaryTag(List<String> tagList, ObjectId postId);
 
     /**
      * 删除标签

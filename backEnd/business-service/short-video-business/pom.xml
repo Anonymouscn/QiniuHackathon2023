@@ -6,10 +6,9 @@
     <groupId>cn.net.anonymous</groupId>
     <artifactId>short-video-business</artifactId>
     <version>1.0.0</version>
-
+    <description>short video business backend</description>
     <packaging>pom</packaging>
     <name>short-video-business</name>
-    <description>short video business backend</description>
 
     <modules>
         <!-- microservice package -->
@@ -49,6 +48,7 @@
         <caffeine.version>3.1.8</caffeine.version>
         <dubbo.version>3.2.7</dubbo.version>
         <knife4j.version>2.0.9</knife4j.version>
+        <knife4j-openapi.version>4.3.0</knife4j-openapi.version>
         <load-balanced.version>4.0.0</load-balanced.version>
         <gateway.version>4.0.0</gateway.version>
         <dubbo.version>3.2.7</dubbo.version>
@@ -59,13 +59,26 @@
         <ffmpeg-dependance.version>3.3.1</ffmpeg-dependance.version>
         <redisson.version>3.24.3</redisson.version>
         <tencent-sms.version>3.1.611</tencent-sms.version>
+        <snakeyaml.version>2.2</snakeyaml.version>
+        <fastjson2.version>2.0.41</fastjson2.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
-            <version>4.3.0</version>
+            <version>${knife4j-openapi.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.yaml</groupId>
+                    <artifactId>snakeyaml</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>${snakeyaml.version}</version>
         </dependency>
 
         <!-- bootstrap * -->
@@ -132,6 +145,17 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.alibaba</groupId>
+                    <artifactId>fastjson</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2</artifactId>
+            <version>${fastjson2.version}</version>
         </dependency>
     </dependencies>
 

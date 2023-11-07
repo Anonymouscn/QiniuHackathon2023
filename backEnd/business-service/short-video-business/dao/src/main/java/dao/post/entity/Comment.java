@@ -58,6 +58,8 @@ public class Comment
 
     /** 评论者 id */
     @Field("post_by")
+    @JsonSerialize(using = JsonConfig.ObjectIdSerializer.class)
+    @JsonDeserialize(using = JsonConfig.ObjectIdDeserializer.class)
     @JsonProperty("post_by")
     private ObjectId postBy;
 

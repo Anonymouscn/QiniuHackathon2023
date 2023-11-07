@@ -31,9 +31,7 @@ public class CommentDto
     private static final long serialVersionUID = 1L;
 
     /** 回复评论 id */
-    @JsonSerialize(using = JsonConfig.ObjectIdSerializer.class)
-    @JsonDeserialize(using = JsonConfig.ObjectIdDeserializer.class)
-    private ObjectId parent;
+    private String parent;
 
     /** 帖子 id */
     @NotEmpty(message = "发布人id不能为空", groups = {ValidGroup.Insert.class})

@@ -80,7 +80,7 @@ public class StreamHandler
             }
             log.info("[流转换完成]");
             // 已完成通知 Monitor
-            kafkaTemplate.send("workflow_stream_ack_topic", com.alibaba.fastjson.JSONObject.toJSONString(task));
+            kafkaTemplate.send("workflow_stream_ack_topic", JSONObject.toJSONString(task));
         });
     }
 

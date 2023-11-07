@@ -3,6 +3,8 @@ package cn.net.anonymous.fileworkflowserver.service.impl;
 import api.workflow.IWorkflowService;
 import com.alibaba.fastjson2.JSONObject;
 import dao.post.repo.PostRepository;
+import dao.workflow.entity.Task;
+import dao.workflow.repo.TaskRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.apache.dubbo.config.annotation.DubboService;
@@ -48,6 +50,8 @@ public class WorkflowServiceImpl
     private final RedissonClient redissonClient;
 
     private final PostRepository postRepository;
+
+    private final TaskRepository taskRepository;
 
     /**
      * 获取服务器信息
@@ -114,7 +118,8 @@ public class WorkflowServiceImpl
         File file = FileUtil.multipartFileToFile(multipartFile,
                 folder.getPath() + "/" + fake + "." + info[1]);
         // 生成任务流
-        WorkflowTask task = WorkflowTask.generateTask(file, info[0]);
+        Task t = taskRepository.createTask();
+        WorkflowTask task = WorkflowTask.generateTask(t.getTaskId().toHexString(), file, info[0]);
         task.setPostId(postId);
         // 提交任务给工作流监视器
         kafkaTemplate.send("workflow_send_task_topic", JSONObject.toJSONString(task));

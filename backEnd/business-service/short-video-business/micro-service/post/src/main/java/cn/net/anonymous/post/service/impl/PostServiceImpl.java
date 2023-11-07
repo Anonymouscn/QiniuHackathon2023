@@ -1,5 +1,6 @@
 package cn.net.anonymous.post.service.impl;
 
+import api.post.ITagService;
 import api.workflow.IWorkflowService;
 import api.post.IPostService;
 import dao.post.entity.Post;
@@ -14,7 +15,6 @@ import pojo.common.vo.Page;
 import pojo.post.dto.PostDto;
 import pojo.workflow.vo.ServerInfo;
 import pojo.post.vo.PostVo;
-import java.util.ArrayList;
 
 /**
  * 视频内容接口实现类
@@ -30,6 +30,9 @@ public class PostServiceImpl
     @DubboReference
     private IWorkflowService workflowService;
 
+    @DubboReference
+    private ITagService tagService;
+
     private final PostRepository postRepository;
 
     private final TagRepository tagRepository;
@@ -44,9 +47,9 @@ public class PostServiceImpl
      * @return 推荐帖子分页结果
      */
     @Override
-    public Page<PostVo> queryRecommendPost(Integer no, Integer size, String userId, String keyword) {
+    public Page<Post> queryRecommendPost(Integer no, Integer size, String userId, String keyword) {
 
-        return null;
+        return postRepository.queryAllPost(no, size, userId);
     }
 
     /**
@@ -112,11 +115,14 @@ public class PostServiceImpl
      */
     @Override
     public PostVo submitPost(PostDto postDto) {
+        // 检查任务是否存在
         Post post = postRepository.getPostById(postDto.getPostId());
-        post.setContent(post.getContent());
+        String content = postDto.getContent();
+        System.out.println(content);
+        post.setContent(content);
+        postRepository.saveOrUpdatePost(post);
         // 设置标签
-        ArrayList<String> tags = new ArrayList<>();
-
+        tagService.summaryTag(postDto.getTagNameList(), post.getPostId());
         return new PostVo()
                 .setPostId(postRepository.saveOrUpdatePost(post)
                         .getPostId().toHexString());

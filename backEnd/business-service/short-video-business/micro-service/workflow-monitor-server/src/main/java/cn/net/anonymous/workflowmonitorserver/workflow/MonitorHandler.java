@@ -1,6 +1,7 @@
 package cn.net.anonymous.workflowmonitorserver.workflow;
 
 import com.alibaba.fastjson2.JSONObject;
+import dao.post.repo.PostRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -37,6 +38,8 @@ public class MonitorHandler
     private final KafkaTemplate<String, String> kafkaTemplate;
 
     private final RedissonClient redissonClient;
+
+    private final PostRepository postRepository;
 
     /**
      * 分发任务消费
@@ -230,7 +233,6 @@ public class MonitorHandler
     @KafkaListener(topics = {"workflow_push_ack_topic"})
     public void pushAck(ConsumerRecord<String, String> record) {
         log.info("[推送完成通知] - {}", record.toString());
-        // todo 视频流文件信息持久化
         // todo 告知 Websocket Monitor 通知用户 - 回调接口
         // 转发消息给清理处理器
         kafkaTemplate.send("workflow_clean_task_topic", record.value());

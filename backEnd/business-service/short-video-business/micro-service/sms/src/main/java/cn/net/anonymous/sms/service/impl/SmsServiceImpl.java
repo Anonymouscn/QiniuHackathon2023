@@ -2,7 +2,7 @@ package cn.net.anonymous.sms.service.impl;
 
 import api.sms.ISmsService;
 import cn.net.anonymous.sms.config.TencentSmsConfig;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.google.common.base.Strings;
 import com.tencentcloudapi.common.Credential;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
