@@ -1,0 +1,39 @@
+spring:
+  redis:
+    password: 123456
+    single:
+      address: "redis://127.0.0.1:6379"
+      database: 7
+  application:
+    name: user-service
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.2.43:8848
+        namespace: cb95c626-d402-4552-a491-3ad4e5fb2553
+        group: ${spring.profiles.active}
+        prefix: ${spring.application.name}
+        file-extension: yml
+      discovery:
+        server-addr: ${spring.cloud.nacos.config.server-addr}
+        namespace: ${spring.cloud.nacos.config.namespace}
+        group: ${spring.profiles.active}
+dubbo:
+  application:
+    name: ${spring.application.name}
+    qosEnable: true
+    qosPort: 33336
+    qosAcceptForeignIp: false
+  registry:
+    check: false
+    address: nacos://${spring.cloud.nacos.config.server-addr}
+    cache-folder: /Users/anonymous/.dubbo/user-service
+  scan:
+    base-packages: service.impl
+  protocol:
+    name: tri
+    port: 15511
+  consumer:
+    check: false

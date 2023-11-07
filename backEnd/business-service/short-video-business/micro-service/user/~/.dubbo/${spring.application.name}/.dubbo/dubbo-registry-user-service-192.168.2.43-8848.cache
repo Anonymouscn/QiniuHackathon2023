@@ -1,0 +1,3 @@
+#Dubbo Registry Cache
+#Sat Oct 28 04:51:30 CST 2023
+api.file.IFileService=empty\://10.3.1.154/api.file.IFileService?application\=user-service&background\=false&category\=providers&check\=false&dubbo\=2.0.2&executor-management-mode\=isolation&file-cache\=true&interface\=api.file.IFileService&methods\=uploadImageToOSS,uploadToOSS,uploadVideoToOSS&pid\=20889&qos.accept.foreign.ip\=false&qos.enable\=true&qos.port\=33336&release\=3.2.7&revision\=1.0.0&side\=consumer&sticky\=false&timestamp\=1698439889296&unloadClusterRelated\=false

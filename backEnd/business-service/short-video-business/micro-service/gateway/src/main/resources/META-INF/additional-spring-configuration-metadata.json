@@ -1,0 +1,53 @@
+{
+  "properties": [
+    {
+      "name": "dubbo.application.name",
+      "type": "java.lang.String",
+      "description": "Description for dubbo.application.name."
+    },
+    {
+      "name": "dubbo.application.qosEnable",
+      "type": "java.lang.String",
+      "description": "Description for dubbo.application.qosEnable."
+    },
+    {
+      "name": "dubbo.application.qosPort",
+      "type": "java.lang.String",
+      "description": "Description for dubbo.application.qosPort."
+    },
+    {
+      "name": "dubbo.application.qosAcceptForeignIp",
+      "type": "java.lang.String",
+      "description": "Description for dubbo.application.qosAcceptForeignIp."
+    },
+    {
+      "name": "dubbo.registry.address",
+      "type": "java.lang.String",
+      "description": "Description for dubbo.registry.address."
+    },
+    {
+      "name": "dubbo.protocol.name",
+      "type": "java.lang.String",
+      "description": "Description for dubbo.protocol.name."
+    },
+    {
+      "name": "dubbo.protocol.port",
+      "type": "java.lang.String",
+      "description": "Description for dubbo.protocol.port."
+    },
+    {
+      "name": "dubbo.registry.cache-folder",
+      "type": "java.lang.String",
+      "description": "Description for dubbo.registry.cache-folder."
+    },
+    {
+      "name": "dubbo.registry.check",
+      "type": "java.lang.String",
+      "description": "Description for dubbo.registry.check."
+    },
+    {
+      "name": "dubbo.consumer.check",
+      "type": "java.lang.String",
+      "description": "Description for dubbo.consumer.check."
+    }
+  ] }
